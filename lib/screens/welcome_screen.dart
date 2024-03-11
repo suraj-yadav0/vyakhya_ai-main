@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import 'package:vyakhya_ai/screens/home_screen.dart';
+import 'package:vyakhya_ai/widgets/custom_button.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -24,8 +25,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           end: Alignment.bottomCenter,
           colors: [
             // Color.fromARGB(255, 109, 124, 147),
-           Color.fromARGB(255, 34, 31, 44),
-            Color.fromARGB(255,156, 189, 188)
+            Color.fromARGB(255, 34, 31, 44),
+            Color.fromARGB(255, 156, 189, 188)
           ],
         )),
         child: Column(
@@ -52,28 +53,33 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   fontWeight: FontWeight.w400),
             ),
             const Spacer(),
-           SizedBox (
-              height: 50,
-  width: 250,
-              child: TextButton(
-                
-                style: TextButton.styleFrom(
-                //  maximumSize: Size(60, 10),
-                  foregroundColor: Colors.white,
-                  backgroundColor: const Color.fromARGB(255, 34, 31, 44),
-                  disabledForegroundColor: Colors.grey.withOpacity(0.38),
-                ),
-                onPressed: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //         builder: (context) => const HomeScreen()));
+            SizedBox(
+                height: 50,
+                width: 250,
+                child: CustomButton(
+                  onTap: () => Get.to(() => const HomeScreen()),
+                  txt: "Home",
+                )
 
-                  Get.to( () => const HomeScreen());
-                },
-               child: const Text('HOME'),
-              ),
-            ),
+                // TextButton(
+
+                //   style: TextButton.styleFrom(
+                //   //  maximumSize: Size(60, 10),
+                //     foregroundColor: Colors.white,
+                //     backgroundColor: const Color.fromARGB(255, 34, 31, 44),
+                //     disabledForegroundColor: Colors.grey.withOpacity(0.38),
+                //   ),
+                //   onPressed: () {
+                //     // Navigator.push(
+                //     //     context,
+                //     //     MaterialPageRoute(
+                //     //         builder: (context) => const HomeScreen()));
+
+                //     Get.to( () => const HomeScreen());
+                //   },
+                //  child: const Text('HOME'),
+                // ),
+                ),
             const Spacer(
               flex: 2,
             ),

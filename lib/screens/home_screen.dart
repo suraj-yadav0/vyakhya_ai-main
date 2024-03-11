@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:vyakhya_ai/model/home_type.dart';
 import 'package:vyakhya_ai/widgets/custom_list.dart';
-
+import 'package:vyakhya_ai/helper/global.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -11,8 +11,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  // intilize media Querry
+
   @override
   Widget build(BuildContext context) {
+      mq = MediaQuery.sizeOf(context);
     return Container(
       decoration: const BoxDecoration(
           gradient: LinearGradient(
