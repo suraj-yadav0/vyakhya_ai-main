@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:vyakhya_ai/model/home_type.dart';
 import 'package:vyakhya_ai/widgets/custom_list.dart';
 import 'package:vyakhya_ai/helper/global.dart';
@@ -28,9 +29,11 @@ class _HomeScreenState extends State<HomeScreen> {
           ])),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text(
+          title:  Text(
             "Vyakhya AI",
-            style: TextStyle(color: Colors.white,fontSize: 26,fontWeight: FontWeight.bold),
+            style: GoogleFonts.handlee(
+            textStyle: const  TextStyle(color: Colors.white,fontSize: 26,fontWeight: FontWeight.bold),
+            ),
           ),
           centerTitle: true,
           backgroundColor: Colors.transparent,

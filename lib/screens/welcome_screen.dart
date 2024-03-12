@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:vyakhya_ai/screens/home_screen.dart';
 import 'package:vyakhya_ai/widgets/custom_button.dart';
 
@@ -34,12 +35,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Spacer(),
-            const Text(
+             Text(
               "Vyakhya AI",
-              style: TextStyle(
+              style:  GoogleFonts.handlee(textStyle: const TextStyle(
                   color: Color.fromARGB(255, 205, 199, 216),
                   fontSize: 36,
-                  fontWeight: FontWeight.bold),
+                  fontWeight: FontWeight.bold),)
             ).animate().fade(
                 duration: const Duration(seconds: 3), curve: Curves.bounceIn),
             const Spacer(),

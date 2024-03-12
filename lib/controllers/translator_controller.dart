@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:vyakhya_ai/api/apis.dart';
+import 'package:vyakhya_ai/helper/mydialog.dart';
+
+enum Status { none , complete, loading}
 
 class TranslatorController extends GetxController {
   final texC = TextEditingController();
