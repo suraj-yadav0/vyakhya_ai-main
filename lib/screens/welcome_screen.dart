@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -37,21 +37,21 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             const Spacer(),
              Text(
               "Vyakhya AI",
-              style:  GoogleFonts.handlee(textStyle: const TextStyle(
+              style:  GoogleFonts.monoton(textStyle: const TextStyle(
                   color: Color.fromARGB(255, 205, 199, 216),
                   fontSize: 36,
                   fontWeight: FontWeight.bold),)
             ).animate().fade(
                 duration: const Duration(seconds: 3), curve: Curves.bounceIn),
             const Spacer(),
-            const Text(
+             Text(
               textAlign: TextAlign.center,
               '"Breaking Barriers, Building Bridges:\n Your Words, Our AI. \n Seamless Translation, Limitless Communication!"',
-              style: TextStyle(
+              style: GoogleFonts.charm(textStyle: const TextStyle(
                   color: Color.fromARGB(255, 219, 224, 222),
                   fontSize: 16,
                   letterSpacing: .5,
-                  fontWeight: FontWeight.w400),
+                  fontWeight: FontWeight.w400),)
             ),
             const Spacer(),
             SizedBox(
