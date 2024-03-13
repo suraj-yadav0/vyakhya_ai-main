@@ -34,10 +34,13 @@ class _TextToTextState extends State<TextToText> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          title:  Text(
-            "Vyakhya AI",
-            style: GoogleFonts.handlee(
-            textStyle: const  TextStyle(color: Colors.white,fontSize: 26,fontWeight: FontWeight.bold),
+          title: Text(
+            "Text to Text Translation",
+            style: GoogleFonts.crimsonText(
+              textStyle: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold),
             ),
           ),
           centerTitle: true,
@@ -88,19 +91,19 @@ class _TextToTextState extends State<TextToText> {
                   onTap: () => Get.bottomSheet(LanguageSheet(c: _c, s: _c.to)),
                   borderRadius: const BorderRadius.all(Radius.circular(15)),
                   child: Container(
-                    height: 50,
-                    alignment: Alignment.center,
-                    width: mq.width * .4,
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(15))),
-                    child:  Obx(() => Text(
-                      _c.to.isEmpty ? 
-                      'To' : _c.to.value,
-                      style: const  TextStyle(color: Colors.white),
-                    ),)
-                  ),
+                      height: 50,
+                      alignment: Alignment.center,
+                      width: mq.width * .4,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(15))),
+                      child: Obx(
+                        () => Text(
+                          _c.to.isEmpty ? 'To' : _c.to.value,
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                      )),
                 ),
               ],
             ),
@@ -114,8 +117,7 @@ class _TextToTextState extends State<TextToText> {
                 controller: _c.texC,
                 minLines: 5,
                 maxLines: null,
-                 style: const TextStyle(color: Colors.white),
-                
+                style: const TextStyle(color: Colors.white),
                 textAlign: TextAlign.center,
                 onTapOutside: (event) => FocusScope.of(context).unfocus(),
                 decoration: const InputDecoration(
@@ -156,7 +158,7 @@ class _TextToTextState extends State<TextToText> {
                 horizontal: mq.width * 0.04, vertical: mq.height * 0.035),
             child: TextFormField(
               controller: _c.resultC,
-               style: const TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
               // minLines: 5,
               maxLines: null,
               textAlign: TextAlign.center,

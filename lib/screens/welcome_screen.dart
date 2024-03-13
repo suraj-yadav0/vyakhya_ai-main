@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
@@ -27,7 +28,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           colors: [
             // Color.fromARGB(255, 109, 124, 147),
             Color.fromARGB(255, 34, 31, 44),
-            Color.fromARGB(255, 156, 189, 188)
+            Color.fromARGB(255, 71, 81, 81)
           ],
         )),
         child: Column(
@@ -37,8 +38,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             const Spacer(),
              Text(
               "Vyakhya AI",
-              style:  GoogleFonts.monoton(textStyle: const TextStyle(
-                  color: Color.fromARGB(255, 205, 199, 216),
+              style:  GoogleFonts.crimsonText(textStyle: const TextStyle(
+                //  color: Color.fromARGB(255, 205, 199, 216),
+                color: Colors.white,
                   fontSize: 36,
                   fontWeight: FontWeight.bold),)
             ).animate().fade(
@@ -47,11 +49,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
              Text(
               textAlign: TextAlign.center,
               '"Breaking Barriers, Building Bridges:\n Your Words, Our AI. \n Seamless Translation, Limitless Communication!"',
-              style: GoogleFonts.charm(textStyle: const TextStyle(
-                  color: Color.fromARGB(255, 219, 224, 222),
-                  fontSize: 16,
+              style: GoogleFonts.crimsonText(textStyle: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
                   letterSpacing: .5,
-                  fontWeight: FontWeight.w400),)
+                  fontWeight: FontWeight.w600,
+                 ),)
             ),
             const Spacer(),
             SizedBox(

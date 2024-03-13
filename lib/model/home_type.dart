@@ -21,7 +21,7 @@ HomeType.chatbot => 'ChatBot',
 
 String get svg => switch(this) {
 HomeType.textTotext => 'assets/svg/text-message-4641.svg',
-HomeType.speechTotext => 'assets/svg/text-to-speech.svg',
+HomeType.speechTotext => 'assets/svg/speech-to-text.svg',
 HomeType.speechToSpeech => 'assets/svg/speech-recognition.svg',
 HomeType.chatbot => 'assets/svg/chatbot-icon.svg',
 };

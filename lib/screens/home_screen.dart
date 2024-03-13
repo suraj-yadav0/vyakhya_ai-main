@@ -25,13 +25,13 @@ class _HomeScreenState extends State<HomeScreen> {
               end: Alignment.bottomCenter,
               colors: [
             Color.fromARGB(255, 34, 31, 44),
-            Color.fromARGB(255,156, 189, 188)
+            Color.fromARGB(255, 71, 81, 81)
           ])),
       child: Scaffold(
         appBar: AppBar(
           title:  Text(
             "Vyakhya AI",
-            style: GoogleFonts.handlee(
+            style: GoogleFonts.crimsonText(
             textStyle: const  TextStyle(color: Colors.white,fontSize: 26,fontWeight: FontWeight.bold),
             ),
           ),
