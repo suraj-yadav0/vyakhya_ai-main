@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vyakhya_ai/model/sppeech_type.dart';
+import 'package:vyakhya_ai/widgets/custom_card.dart';
 
 class SpeechToSpeech extends StatefulWidget {
   const SpeechToSpeech({super.key});
@@ -36,8 +38,18 @@ class _SpeechToSpeechState extends State<SpeechToSpeech> {
           backgroundColor: Colors.transparent,
         ),
 
-        body: const Center(child: Text("I m working on it..stay tuned.",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20),),),
-      ),
-      );
+        body:   SizedBox(
+          height: 100,
+          child: ListView(
+              scrollDirection: Axis.horizontal,
+                  // shrinkWrap: true,
+                           padding: const EdgeInsets.symmetric(horizontal: 25,),
+                            children: SpeechType.values.map((e) => CustomCard(speechType: e)).toList(),
+                          ),
+        ),
+        ),
+        
+        
+         );
   }
 }

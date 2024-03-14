@@ -11,8 +11,8 @@ class ChatBotScreen extends StatefulWidget {
 class _ChatBotScreenState extends State<ChatBotScreen> {
   @override
   Widget build(BuildContext context) {
-    return  Container(
-       decoration: const BoxDecoration(
+    return Container(
+      decoration: const BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
@@ -21,7 +21,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
             Color.fromARGB(255, 156, 189, 188)
           ])),
       child: Scaffold(
-         backgroundColor: Colors.transparent,
+        backgroundColor: Colors.transparent,
         appBar: AppBar(
           title: Text(
             "The ChatBot",
@@ -35,9 +35,14 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
           centerTitle: true,
           backgroundColor: Colors.transparent,
         ),
-
-        body: const Center(child: Text("I m working on it..stay tuned.",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 20),),),
+        body: const Center(
+          child: Text(
+            "I m working on it..stay tuned.",
+            style: TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20),
+          ),
+        ),
       ),
-      );
+    );
   }
 }
