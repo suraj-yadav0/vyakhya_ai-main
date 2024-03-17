@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'package:get/get.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
-import 'package:vyakhya_ai/controllers/translator_controller.dart';
+import 'package:vyakhya_ai/controllers/speech_to_text.dart';
+
 import 'package:vyakhya_ai/helper/global.dart';
 import 'package:vyakhya_ai/model/sppeech_type.dart';
 
@@ -13,7 +15,8 @@ import 'package:vyakhya_ai/widgets/custom_button.dart';
 import 'package:vyakhya_ai/widgets/custom_card.dart';
 
 import 'package:vyakhya_ai/widgets/custom_loading.dart';
-import 'package:vyakhya_ai/widgets/language_sheet.dart';
+
+import 'package:vyakhya_ai/widgets/widget2/speech_language_sheet.dart';
 
 class SpeecgToText extends StatefulWidget {
   const SpeecgToText({super.key});
@@ -50,7 +53,13 @@ class _SpeecgToTextState extends State<SpeecgToText> {
 
   void _stopListening() async {
     await _speechToText.stop();
-    setState(() {});
+    setState(() {
+      _s.res = _lastWords;
+    });
+  }
+
+  void updateText(val) {
+    _s.res = val;
   }
 
   void _onSpeechResult(SpeechRecognitionResult result) {
@@ -59,7 +68,9 @@ class _SpeecgToTextState extends State<SpeecgToText> {
     });
   }
 
-  final _c = TranslatorController();
+  final _s = SpeechTranslatorController();
+
+  // final _c = TranslatorController();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -75,7 +86,7 @@ class _SpeecgToTextState extends State<SpeecgToText> {
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           title: Text(
-            "Speech To Text Translation",
+            "Speech To Text",
             style: GoogleFonts.crimsonText(
               textStyle: const TextStyle(
                   color: Colors.white,
@@ -97,7 +108,7 @@ class _SpeecgToTextState extends State<SpeecgToText> {
                 // From Section
                 InkWell(
                   onTap: () =>
-                      Get.bottomSheet(LanguageSheet(c: _c, s: _c.from)),
+                      Get.bottomSheet(SpeechLanguageSheet(c: _s, s: _s.from)),
                   borderRadius: const BorderRadius.all(Radius.circular(15)),
                   child: Container(
                       height: 50,
@@ -109,7 +120,7 @@ class _SpeecgToTextState extends State<SpeecgToText> {
                               const BorderRadius.all(Radius.circular(15))),
                       child: Obx(
                         () => Text(
-                          _c.from.isEmpty ? 'Auto' : _c.from.value,
+                          _s.from.isEmpty ? 'Auto' : _s.from.value,
                           style: const TextStyle(color: Colors.white),
                         ),
                       )),
@@ -117,10 +128,10 @@ class _SpeecgToTextState extends State<SpeecgToText> {
 
                 // Swap Button
                 IconButton(
-                    onPressed: _c.swapLanguages,
+                    onPressed: _s.swapLanguages,
                     icon: Obx(
                       () => Icon(CupertinoIcons.repeat,
-                          color: _c.to.isNotEmpty && _c.from.isNotEmpty
+                          color: _s.to.isNotEmpty && _s.from.isNotEmpty
                               ? Colors.blue
                               : Colors.grey),
                     )),
@@ -128,7 +139,8 @@ class _SpeecgToTextState extends State<SpeecgToText> {
                 //To Section,
 
                 InkWell(
-                  onTap: () => Get.bottomSheet(LanguageSheet(c: _c, s: _c.to)),
+                  onTap: () =>
+                      Get.bottomSheet(SpeechLanguageSheet(c: _s, s: _s.to)),
                   borderRadius: const BorderRadius.all(Radius.circular(15)),
                   child: Container(
                       height: 50,
@@ -140,7 +152,7 @@ class _SpeecgToTextState extends State<SpeecgToText> {
                               const BorderRadius.all(Radius.circular(15))),
                       child: Obx(
                         () => Text(
-                          _c.to.isEmpty ? 'To' : _c.to.value,
+                          _s.to.isEmpty ? 'To' : _s.to.value,
                           style: const TextStyle(color: Colors.white),
                         ),
                       )),
@@ -149,22 +161,6 @@ class _SpeecgToTextState extends State<SpeecgToText> {
             ),
 
             // for input,
-
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: mq.width * 0.04, vertical: mq.height * 0.035),
-              child: Expanded(
-                child: Container(
-                  height: 80,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.white),
-                  ),
-                  child: const Align(
-                    child: Text("Recognized Words"),
-                  ),
-                ),
-              ),
-            ),
 
             Expanded(
               child: Container(
@@ -189,14 +185,18 @@ class _SpeecgToTextState extends State<SpeecgToText> {
                   ? _startListening
                   : _stopListening,
               tooltip: 'Listen',
-              child: Icon(_speechToText.isNotListening ? Icons.mic_off  : Icons.mic),
+              child: Icon(
+                  _speechToText.isNotListening ? Icons.mic_off : Icons.mic),
             ),
 
             // Padding(
             //   padding: EdgeInsets.symmetric(
             //       horizontal: mq.width * 0.04, vertical: mq.height * 0.035),
             //   child: TextFormField(
-            //     controller: _c.texC,
+            //     onChanged: (value) {
+            //       updateText(value);
+            //     },
+            //     // controller: _s.res.toString(),
             //     minLines: 5,
             //     maxLines: null,
             //     style: const TextStyle(color: Colors.white),
@@ -213,18 +213,34 @@ class _SpeecgToTextState extends State<SpeecgToText> {
             //   ),
             // ),
 
-            // Obx(
-            //   () => _translateResult(),
-            // ),
+            Obx(
+              () => _translateResult(),
+            ),
 
             SizedBox(
               height: mq.height * 0.04,
             ),
 
-            // if (_c.resultC.text.isNotEmpty)
-            //   Obx(
-            //     () => _translateResult(),
-            //   ),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: mq.width * 0.04, vertical: mq.height * 0.035),
+              child: Expanded(
+                child: Container(
+                  height: 80,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white),
+                  ),
+                  child: Align(
+                    child: Text(_lastWords),
+                  ),
+                ),
+              ),
+            ),
+
+            if (_s.resultC.text.isNotEmpty)
+              Obx(
+                () => _translateResult(),
+              ),
 
             SizedBox(
               height: 100,
@@ -240,20 +256,26 @@ class _SpeecgToTextState extends State<SpeecgToText> {
               height: mq.height * 0.04,
             ),
 
-            CustomButton(txt: "Translate", onTap: _c.googleTranslate)
+            CustomButton(txt: "Translate", onTap: _s.googleTranslate)
           ],
         ),
       ),
     );
   }
 
-  Widget _translateResult() => switch (_c.status.value) {
-        Status.none => const SizedBox(),
-        Status.complete => Padding(
+//   Widget _translateSpeechResult() => switch (_s.status.value) {
+//  Condition.complete =
+
+//   };
+
+  Widget _translateResult() => switch (_s.status.value) {
+        Statu.none => const SizedBox(),
+        // Condition.none => const SizedBox(),
+        Statu.complete => Padding(
             padding: EdgeInsets.symmetric(
                 horizontal: mq.width * 0.04, vertical: mq.height * 0.035),
             child: TextFormField(
-              controller: _c.resultC,
+              controller: _s.resultC,
               style: const TextStyle(color: Colors.white),
               // minLines: 5,
               maxLines: null,
@@ -264,6 +286,6 @@ class _SpeecgToTextState extends State<SpeecgToText> {
                       borderRadius: BorderRadius.all(Radius.circular(10)))),
             ),
           ),
-        Status.loading => const Align(child: CustomLoading())
+        Statu.loading => const Align(child: CustomLoading())
       };
 }

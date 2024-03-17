@@ -1,99 +1,179 @@
-import 'package:flutter/material.dart';
-import 'package:speech_to_text/speech_recognition_result.dart';
-import 'package:speech_to_text/speech_to_text.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
+import 'package:vyakhya_ai/api/apis.dart';
+import 'package:vyakhya_ai/helper/mydialog.dart';
 
+enum Statu { none, complete, loading }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key}) : super(key: key);
+class SpeechTranslatorController extends GetxController {
+  // final texC = TextEditingController();
+   var res = '';
+  final resultC = TextEditingController();
 
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
+  final from = ''.obs, to = ''.obs;
 
-class _MyHomePageState extends State<MyHomePage> {
-  SpeechToText _speechToText = SpeechToText();
-  bool _speechEnabled = false;
-  String _lastWords = '';
+  final status = Statu.none.obs;
 
-  @override
-  void initState() {
-    super.initState();
-    _initSpeech();
+  void swapLanguages() {
+    if (to.isNotEmpty && from.isNotEmpty) {
+      final t = to.value;
+      to.value = from.value;
+      from.value = t;
+    }
   }
 
-  /// This has to happen only once per app
-  void _initSpeech() async {
-    _speechEnabled = await _speechToText.initialize();
-    setState(() {});
+  Future<void> googleTranslate() async {
+    if (res.isNotEmpty) {
+      status.value = Statu.loading;
+
+      resultC.text = await APIs.googleTranslate(
+          from: jsonLang[from.value] ?? 'auto',
+          to: jsonLang[to.value] ?? 'en',
+          text: res);
+
+      status.value = Statu.complete;
+    } else {
+      status.value = Statu.none;
+      if (to.isEmpty) MyDialog.info('Select To Language!');
+      MyDialog.info('Please Ask Something !');
+    }
   }
 
-  /// Each time to start a speech recognition session
-  void _startListening() async {
-    await _speechToText.listen(onResult: _onSpeechResult);
-    setState(() {});
-  }
+  late final lang = jsonLang.keys.toList();
 
-  /// Manually stop the active speech recognition session
-  /// Note that there are also timeouts that each platform enforces
-  /// and the SpeechToText plugin supports setting timeouts on the
-  /// listen method.
-  void _stopListening() async {
-    await _speechToText.stop();
-    setState(() {});
-  }
-
-  /// This is the callback that the SpeechToText plugin calls when
-  /// the platform returns recognized words.
-  void _onSpeechResult(SpeechRecognitionResult result) {
-    setState(() {
-      _lastWords = result.recognizedWords;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Speech Demo'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              padding: const EdgeInsets.all(16),
-              child: const Text(
-                'Recognized words:',
-                style: TextStyle(fontSize: 20.0),
-              ),
-            ),
-            Expanded(
-              child: Container(
-                padding: const EdgeInsets.all(16),
-                child: Text(
-                  // If listening is active show the recognized words
-                  _speechToText.isListening
-                      ? _lastWords
-                      // If listening isn't active but could be tell the user
-                      // how to start it, otherwise indicate that speech
-                      // recognition is not yet ready or not supported on
-                      // the target device
-                      : _speechEnabled
-                          ? 'Tap the microphone to start listening...'
-                          : 'Speech not available',
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed:
-            // If not yet listening for speech start, otherwise stop
-            _speechToText.isNotListening ? _startListening : _stopListening,
-        tooltip: 'Listen',
-        child: Icon(_speechToText.isNotListening ? Icons.mic_off : Icons.mic),
-      ),
-    );
-  }
+  final jsonLang = const {
+    // 'Automatic': 'auto',
+    'Afrikaans': 'af',
+    'Albanian': 'sq',
+    'Amharic': 'am',
+    'Arabic': 'ar',
+    'Armenian': 'hy',
+    'Assamese': 'as',
+    'Aymara': 'ay',
+    'Azerbaijani': 'az',
+    'Bambara': 'bm',
+    'Basque': 'eu',
+    'Belarusian': 'be',
+    'Bengali': 'bn',
+    'Bhojpuri': 'bho',
+    'Bosnian': 'bs',
+    'Bulgarian': 'bg',
+    'Catalan': 'ca',
+    'Cebuano': 'ceb',
+    'Chinese (Simplified)': 'zh-cn',
+    'Chinese (Traditional)': 'zh-tw',
+    'Corsican': 'co',
+    'Croatian': 'hr',
+    'Czech': 'cs',
+    'Danish': 'da',
+    'Dhivehi': 'dv',
+    'Dogri': 'doi',
+    'Dutch': 'nl',
+    'English': 'en',
+    'Esperanto': 'eo',
+    'Estonian': 'et',
+    'Ewe': 'ee',
+    'Filipino (Tagalog)': 'tl',
+    'Finnish': 'fi',
+    'French': 'fr',
+    'Frisian': 'fy',
+    'Galician': 'gl',
+    'Georgian': 'ka',
+    'German': 'de',
+    'Greek': 'el',
+    'Guarani': 'gn',
+    'Gujarati': 'gu',
+    'Haitian Creole': 'ht',
+    'Hausa': 'ha',
+    'Hawaiian': 'haw',
+    'Hebrew': 'iw',
+    'Hindi': 'hi',
+    'Hmong': 'hmn',
+    'Hungarian': 'hu',
+    'Icelandic': 'is',
+    'Igbo': 'ig',
+    'Ilocano': 'ilo',
+    'Indonesian': 'id',
+    'Irish': 'ga',
+    'Italian': 'it',
+    'Japanese': 'ja',
+    'Javanese': 'jw',
+    'Kannada': 'kn',
+    'Kazakh': 'kk',
+    'Khmer': 'km',
+    'Kinyarwanda': 'rw',
+    'Konkani': 'gom',
+    'Korean': 'ko',
+    'Krio': 'kri',
+    'Kurdish (Kurmanji)': 'ku',
+    'Kurdish (Sorani)': 'ckb',
+    'Kyrgyz': 'ky',
+    'Lao': 'lo',
+    'Latin': 'la',
+    'Latvian': 'lv',
+    'Lithuanian': 'lt',
+    'Luganda': 'lg',
+    'Luxembourgish': 'lb',
+    'Macedonian': 'mk',
+    'Malagasy': 'mg',
+    'Maithili': 'mai',
+    'Malay': 'ms',
+    'Malayalam': 'ml',
+    'Maltese': 'mt',
+    'Maori': 'mi',
+    'Marathi': 'mr',
+    'Meiteilon (Manipuri)': 'mni-mtei',
+    'Mizo': 'lus',
+    'Mongolian': 'mn',
+    'Myanmar (Burmese)': 'my',
+    'Nepali': 'ne',
+    'Norwegian': 'no',
+    'Nyanja (Chichewa)': 'ny',
+    'Odia (Oriya)': 'or',
+    'Oromo': 'om',
+    'Pashto': 'ps',
+    'Persian': 'fa',
+    'Polish': 'pl',
+    'Portuguese': 'pt',
+    'Punjabi': 'pa',
+    'Quechua': 'qu',
+    'Romanian': 'ro',
+    'Russian': 'ru',
+    'Samoan': 'sm',
+    'Sanskrit': 'sa',
+    'Scots Gaelic': 'gd',
+    'Sepedi': 'nso',
+    'Serbian': 'sr',
+    'Sesotho': 'st',
+    'Shona': 'sn',
+    'Sindhi': 'sd',
+    'Sinhala': 'si',
+    'Slovak': 'sk',
+    'Slovenian': 'sl',
+    'Somali': 'so',
+    'Spanish': 'es',
+    'Sundanese': 'su',
+    'Swahili': 'sw',
+    'Swedish': 'sv',
+    'Tajik': 'tg',
+    'Tamil': 'ta',
+    'Tatar': 'tt',
+    'Telugu': 'te',
+    'Thai': 'th',
+    'Tigrinya': 'ti',
+    'Tsonga': 'ts',
+    'Turkish': 'tr',
+    'Turkmen': 'tk',
+    'Twi (Akan)': 'ak',
+    'Ukrainian': 'uk',
+    'Urdu': 'ur',
+    'Uyghur': 'ug',
+    'Uzbek': 'uz',
+    'Vietnamese': 'vi',
+    'Welsh': 'cy',
+    'Xhosa': 'xh',
+    'Yiddish': 'yi',
+    'Yoruba': 'yo',
+    'Zulu': 'zu'
+  };
 }

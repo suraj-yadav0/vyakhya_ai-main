@@ -66,7 +66,7 @@ class _SpeechToSpeechState extends State<SpeechToSpeech> {
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           title: Text(
-            "Speech To Speech Translation",
+            "Speech To Speech",
             style: GoogleFonts.crimsonText(
               textStyle: const TextStyle(
                   color: Colors.white,

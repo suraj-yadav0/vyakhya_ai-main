@@ -35,7 +35,7 @@ class _TextToTextState extends State<TextToText> {
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           title: Text(
-            "Text to Text Translation",
+            "Text to Text",
             style: GoogleFonts.crimsonText(
               textStyle: const TextStyle(
                   color: Colors.white,
