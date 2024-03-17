@@ -17,7 +17,9 @@ extension MySpeechType on SpeechType {
 
   VoidCallback get onTap => switch (this) {
         SpeechType.write => () {},
-        SpeechType.record => () {},
+        SpeechType.record => () {
+          
+        },
         SpeechType.scan => () {},
       };
 
