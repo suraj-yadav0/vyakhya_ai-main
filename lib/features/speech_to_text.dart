@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:get/get.dart';
 
@@ -27,6 +28,7 @@ class SpeecgToText extends StatefulWidget {
 
 class _SpeecgToTextState extends State<SpeecgToText> {
   SpeechToText _speechToText = SpeechToText();
+  TextEditingController _controller = TextEditingController();
   bool _speechEnabled = false;
   String _lastWords = "";
 
@@ -45,7 +47,9 @@ class _SpeecgToTextState extends State<SpeecgToText> {
 // to start listening
   void _startListening() async {
     await _speechToText.listen(onResult: _onSpeechResult);
-    setState(() {});
+    setState(() {
+      
+    });
   }
 
   // to stop listening some duration could be setup..
@@ -58,11 +62,10 @@ class _SpeecgToTextState extends State<SpeecgToText> {
     });
   }
 
-  void updateText(val) {
-    _s.res = val;
-  }
+ 
 
   void _onSpeechResult(SpeechRecognitionResult result) {
+    _controller.text = result.recognizedWords;
     setState(() {
       _lastWords = result.recognizedWords;
     });
@@ -163,55 +166,60 @@ class _SpeecgToTextState extends State<SpeecgToText> {
             // for input,
 
             Expanded(
-              child: Container(
-                padding: const EdgeInsets.all(16),
-                child: Text(
-                  // If listening is active show the recognized words
-                  _speechToText.isListening
-                      ? _lastWords
-                      // If listening isn't active but could be tell the user
-                      // how to start it, otherwise indicate that speech
-                      // recognition is not yet ready or not supported on
-                      // the target device
-                      : _speechEnabled
-                          ? 'Tap the microphone to start listening...'
-                          : 'Speech not available',
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Container(
+                 
+                  padding: const EdgeInsets.all(16),
+                  child: Text(
+                    // If listening is active show the recognized words
+                    _speechToText.isListening
+                        ? _lastWords
+                        // If listening isn't active but could be tell the user
+                        // how to start it, otherwise indicate that speech
+                        // recognition is not yet ready or not supported on
+                        // the target device
+                        : _speechEnabled
+                            ? 'Tap the microphone to start listening...'
+                            : 'Speech not available',
+                    style: const TextStyle(color: Colors.white),
+                  ),
                 ),
               ),
             ),
 
-            FloatingActionButton(
-              onPressed: _speechToText.isNotListening
-                  ? _startListening
-                  : _stopListening,
-              tooltip: 'Listen',
-              child: Icon(
-                  _speechToText.isNotListening ? Icons.mic_off : Icons.mic),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 120),
+              child: FloatingActionButton(
+                onPressed: _speechToText.isNotListening
+                    ? _startListening
+                    : _stopListening,
+                tooltip: 'Listen',
+                child: Icon(
+                    _speechToText.isNotListening ? Icons.mic_off : Icons.mic),
+              ),
             ),
 
-            // Padding(
-            //   padding: EdgeInsets.symmetric(
-            //       horizontal: mq.width * 0.04, vertical: mq.height * 0.035),
-            //   child: TextFormField(
-            //     onChanged: (value) {
-            //       updateText(value);
-            //     },
-            //     // controller: _s.res.toString(),
-            //     minLines: 5,
-            //     maxLines: null,
-            //     style: const TextStyle(color: Colors.white),
-            //     textAlign: TextAlign.center,
-            //     onTapOutside: (event) => FocusScope.of(context).unfocus(),
-            //     decoration: const InputDecoration(
-            //         hintText: "Translate Anything You Want !",
-            //         hintStyle: TextStyle(fontSize: 13.5, color: Colors.white),
-            //         border: OutlineInputBorder(
-            //           borderRadius: BorderRadius.all(
-            //             Radius.circular(10),
-            //           ),
-            //         )),
-            //   ),
-            // ),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: mq.width * 0.04, vertical: mq.height * 0.035),
+              child: TextField(
+                controller: _controller,
+                minLines: 5,
+                maxLines: null,
+                style: const TextStyle(color: Colors.white),
+                textAlign: TextAlign.center,
+                onTapOutside: (event) => FocusScope.of(context).unfocus(),
+                decoration: const InputDecoration(
+                    hintText: "Translate Anything You Want !",
+                    hintStyle: TextStyle(fontSize: 13.5, color: Colors.white),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
+                    )),
+              ),
+            ),
 
             Obx(
               () => _translateResult(),
@@ -221,37 +229,38 @@ class _SpeecgToTextState extends State<SpeecgToText> {
               height: mq.height * 0.04,
             ),
 
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: mq.width * 0.04, vertical: mq.height * 0.035),
-              child: Expanded(
-                child: Container(
-                  height: 80,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.white),
-                  ),
-                  child: Align(
-                    child: Text(_lastWords),
-                  ),
-                ),
-              ),
-            ),
+            // Padding(
+            //   padding: EdgeInsets.symmetric(
+            //       horizontal: mq.width * 0.04, vertical: mq.height * 0.035),
+            //   child: Expanded(
+            //     child: Container(
+            //       height: 80,
+            //       decoration: BoxDecoration(
+            //         border: Border.all(color: Colors.white),
+            //       ),
+            //       child: Align(
+            //         child: Text(_lastWords,style: const TextStyle(color: Colors.white),),
+            //       ),
+            //     ),
+            //   ),
+            // ),
 
             if (_s.resultC.text.isNotEmpty)
               Obx(
                 () => _translateResult(),
               ),
 
-            SizedBox(
-              height: 100,
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                padding: const EdgeInsets.symmetric(horizontal: 25),
-                children: SpeechType.values
-                    .map((e) => CustomCard(speechType: e))
-                    .toList(),
-              ),
-            ),
+// I will work on you later
+            // SizedBox(
+            //   height: 100,
+            //   child: ListView(
+            //     scrollDirection: Axis.horizontal,
+            //     padding: const EdgeInsets.symmetric(horizontal: 25),
+            //     children: SpeechType.values
+            //         .map((e) => CustomCard(speechType: e))
+            //         .toList(),
+            //   ),
+            // ),
             SizedBox(
               height: mq.height * 0.04,
             ),
@@ -263,10 +272,7 @@ class _SpeecgToTextState extends State<SpeecgToText> {
     );
   }
 
-//   Widget _translateSpeechResult() => switch (_s.status.value) {
-//  Condition.complete =
 
-//   };
 
   Widget _translateResult() => switch (_s.status.value) {
         Statu.none => const SizedBox(),

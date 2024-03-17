@@ -23,7 +23,7 @@ class SpeechTranslatorController extends GetxController {
   }
 
   Future<void> googleTranslate() async {
-    if (res.isNotEmpty) {
+    if (res.trim().isNotEmpty) {
       status.value = Statu.loading;
 
       resultC.text = await APIs.googleTranslate(
