@@ -1,4 +1,8 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:vyakhya_ai/api/apis.dart';
 import 'package:vyakhya_ai/helper/mydialog.dart';
@@ -7,8 +11,8 @@ enum Statu { none, complete, loading }
 
 class SpeechTranslatorController extends GetxController {
   // final texC = TextEditingController();
-   var res = '';
-  final resultC = TextEditingController();
+  TextEditingController res = TextEditingController();
+  TextEditingController resultC = TextEditingController();
 
   final from = ''.obs, to = ''.obs;
 
@@ -23,19 +27,23 @@ class SpeechTranslatorController extends GetxController {
   }
 
   Future<void> googleTranslate() async {
-    if (res.trim().isNotEmpty) {
+    
+    if (res.text.trim().isNotEmpty) {
       status.value = Statu.loading;
 
       resultC.text = await APIs.googleTranslate(
           from: jsonLang[from.value] ?? 'auto',
           to: jsonLang[to.value] ?? 'en',
-          text: res);
+          text: res.text);
+
+      log("I have Reached");
 
       status.value = Statu.complete;
     } else {
       status.value = Statu.none;
       if (to.isEmpty) MyDialog.info('Select To Language!');
       MyDialog.info('Please Ask Something !');
+      log("I have failed");
     }
   }
 

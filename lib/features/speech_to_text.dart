@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -47,28 +49,31 @@ class _SpeecgToTextState extends State<SpeecgToText> {
 // to start listening
   void _startListening() async {
     await _speechToText.listen(onResult: _onSpeechResult);
-    setState(() {
-      
-    });
+    setState(() {});
   }
 
   // to stop listening some duration could be setup..
   // maybe I'll add it in future
 
-  void _stopListening() async {
-    await _speechToText.stop();
-    setState(() {
-      _s.res = _lastWords;
-    });
-  }
+ void _stopListening() async {
+  await _speechToText.stop();
+  setState(() {
+    _s.res.text = _lastWords;
+  });
+}
 
- 
 
   void _onSpeechResult(SpeechRecognitionResult result) {
     _controller.text = result.recognizedWords;
+    log(_controller.text);
     setState(() {
       _lastWords = result.recognizedWords;
     });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   final _s = SpeechTranslatorController();
@@ -169,7 +174,6 @@ class _SpeecgToTextState extends State<SpeecgToText> {
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Container(
-                 
                   padding: const EdgeInsets.all(16),
                   child: Text(
                     // If listening is active show the recognized words
@@ -189,7 +193,8 @@ class _SpeecgToTextState extends State<SpeecgToText> {
             ),
 
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 120),
+              padding:
+                  const EdgeInsets.symmetric(vertical: 10, horizontal: 120),
               child: FloatingActionButton(
                 onPressed: _speechToText.isNotListening
                     ? _startListening
@@ -203,7 +208,7 @@ class _SpeecgToTextState extends State<SpeecgToText> {
             Padding(
               padding: EdgeInsets.symmetric(
                   horizontal: mq.width * 0.04, vertical: mq.height * 0.035),
-              child: TextField(
+              child: TextFormField(
                 controller: _controller,
                 minLines: 5,
                 maxLines: null,
@@ -228,22 +233,6 @@ class _SpeecgToTextState extends State<SpeecgToText> {
             SizedBox(
               height: mq.height * 0.04,
             ),
-
-            // Padding(
-            //   padding: EdgeInsets.symmetric(
-            //       horizontal: mq.width * 0.04, vertical: mq.height * 0.035),
-            //   child: Expanded(
-            //     child: Container(
-            //       height: 80,
-            //       decoration: BoxDecoration(
-            //         border: Border.all(color: Colors.white),
-            //       ),
-            //       child: Align(
-            //         child: Text(_lastWords,style: const TextStyle(color: Colors.white),),
-            //       ),
-            //     ),
-            //   ),
-            // ),
 
             if (_s.resultC.text.isNotEmpty)
               Obx(
@@ -271,8 +260,6 @@ class _SpeecgToTextState extends State<SpeecgToText> {
       ),
     );
   }
-
-
 
   Widget _translateResult() => switch (_s.status.value) {
         Statu.none => const SizedBox(),
