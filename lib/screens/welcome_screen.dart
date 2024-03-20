@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vyakhya_ai/helper/global.dart';
 import 'package:vyakhya_ai/screens/home_screen.dart';
 import 'package:vyakhya_ai/widgets/custom_button.dart';
 
@@ -21,14 +22,15 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
             gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
           colors: [
             // Color.fromARGB(255, 109, 124, 147),
-            Color.fromARGB(255, 34, 31, 44),
-            Color.fromARGB(255, 71, 81, 81)
+            // Colors.deepPurple,
+  color1,
+             color2
           ],
         )),
         child: Column(

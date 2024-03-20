@@ -19,13 +19,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
       mq = MediaQuery.sizeOf(context);
     return Container(
-      decoration: const BoxDecoration(
+      decoration:  BoxDecoration(
           gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
               colors: [
-            Color.fromARGB(255, 34, 31, 44),
-            Color.fromARGB(255, 71, 81, 81)
+           color1,color2
           ])),
       child: Scaffold(
         appBar: AppBar(
