@@ -11,6 +11,7 @@ class CustomList extends StatelessWidget {
     return InkWell(
       onTap: homeType.onTap,
       child: Card(
+        
          elevation: 10,
         child: Row(
           children: [

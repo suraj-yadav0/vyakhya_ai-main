@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
+import 'package:vyakhya_ai/helper/global.dart';
 import 'package:vyakhya_ai/model/sppeech_type.dart';
 import 'package:vyakhya_ai/widgets/custom_card.dart';
 
@@ -54,13 +55,12 @@ class _SpeechToSpeechState extends State<SpeechToSpeech> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
+      decoration:  BoxDecoration(
           gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
               colors: [
-            Color.fromARGB(255, 34, 31, 44),
-            Color.fromARGB(255, 156, 189, 188)
+            color1,color2
           ])),
       child: Scaffold(
         backgroundColor: Colors.transparent,
