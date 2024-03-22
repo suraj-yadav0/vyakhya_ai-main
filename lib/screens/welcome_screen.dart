@@ -53,7 +53,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               '"Breaking Barriers, Building Bridges:\n Your Words, Our AI. \n Seamless Translation, Limitless Communication!"',
               style: GoogleFonts.crimsonText(textStyle: const TextStyle(
                   color: Colors.white,
-                  fontSize: 20,
+                  fontSize: 18,
                   letterSpacing: .5,
                   fontWeight: FontWeight.w600,
                  ),)

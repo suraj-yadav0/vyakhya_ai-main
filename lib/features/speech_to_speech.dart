@@ -41,9 +41,7 @@ class _SpeechToSpeechState extends State<SpeechToSpeech> {
 
   void _stopListening() async {
     await _speechToText.stop();
-    setState(() {
-      
-    });
+    setState(() {});
   }
 
   void _onSpeechResult(SpeechRecognitionResult result) {
@@ -55,12 +53,13 @@ class _SpeechToSpeechState extends State<SpeechToSpeech> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration:  BoxDecoration(
+      decoration: BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-            color1,color2
+            color1,
+            color2,
           ])),
       child: Scaffold(
         backgroundColor: Colors.transparent,
