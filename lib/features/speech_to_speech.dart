@@ -1,10 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
+import 'package:vyakhya_ai/controllers/speech_to_text.dart';
 import 'package:vyakhya_ai/helper/global.dart';
 import 'package:vyakhya_ai/model/sppeech_type.dart';
 import 'package:vyakhya_ai/widgets/custom_card.dart';
+import 'package:vyakhya_ai/widgets/widget2/speech_language_sheet.dart';
 
 class SpeechToSpeech extends StatefulWidget {
   const SpeechToSpeech({super.key});
@@ -17,6 +21,8 @@ class _SpeechToSpeechState extends State<SpeechToSpeech> {
   SpeechToText _speechToText = SpeechToText();
   bool _speechEnabled = false;
   String _lastWords = "";
+
+  TextEditingController _controller = TextEditingController();
 
   @override
   void initState() {
@@ -45,10 +51,18 @@ class _SpeechToSpeechState extends State<SpeechToSpeech> {
   }
 
   void _onSpeechResult(SpeechRecognitionResult result) {
+    _controller.text = result.recognizedWords;
     setState(() {
       _lastWords = result.recognizedWords;
     });
   }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  final _s = SpeechTranslatorController();
 
   @override
   Widget build(BuildContext context) {
@@ -62,34 +76,130 @@ class _SpeechToSpeechState extends State<SpeechToSpeech> {
             color2,
           ])),
       child: Scaffold(
-        backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          title: Text(
-            "Speech To Speech",
-            style: GoogleFonts.crimsonText(
-              textStyle: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold),
-            ),
-          ),
-          centerTitle: true,
           backgroundColor: Colors.transparent,
-        ),
-        body: SizedBox(
-          height: 100,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            // shrinkWrap: true,
-            padding: const EdgeInsets.symmetric(
-              horizontal: 25,
+          appBar: AppBar(
+            title: Text(
+              "Speech To Speech",
+              style: GoogleFonts.crimsonText(
+                textStyle: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold),
+              ),
             ),
-            children: SpeechType.values
-                .map((e) => CustomCard(speechType: e))
-                .toList(),
+            centerTitle: true,
+            backgroundColor: Colors.transparent,
           ),
-        ),
-      ),
+          body: ListView(
+            physics: const BouncingScrollPhysics(),
+            padding:
+                EdgeInsets.only(top: mq.height * 0.02, bottom: mq.width * 0.01),
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // From Section,
+                  InkWell(
+                    onTap: () =>
+                        Get.bottomSheet(SpeechLanguageSheet(c: _s, s: _s.from)),
+                    borderRadius: const BorderRadius.all(Radius.circular(15)),
+                    child: Container(
+                      height: 50,
+                      alignment: Alignment.center,
+                      width: mq.width * .4,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(15))),
+                      child: Obx(() => Text(
+                            _s.from.isEmpty ? 'Auto' : _s.from.value,
+                            style: const TextStyle(color: Colors.white),
+                          )),
+                    ),
+                  ),
+
+                  //Swap Button,
+
+                  IconButton(
+                      onPressed: _s.swapLanguages,
+                      icon: Obx(() => Icon(
+                            CupertinoIcons.repeat,
+                            color: _s.to.isNotEmpty && _s.from.isNotEmpty
+                                ? Colors.blue
+                                : Colors.grey,
+                          ))),
+
+                  // To Section,
+
+                  InkWell(
+                    onTap: () =>
+                        Get.bottomSheet(SpeechLanguageSheet(c: _s, s: _s.to)),
+                    borderRadius: const BorderRadius.all(Radius.circular(15)),
+                    child: Container(
+                      height: 50,
+                      alignment: Alignment.center,
+                      width: mq.width * .4,
+                      decoration: BoxDecoration(
+                          border: Border.all(color: Colors.grey),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(15))),
+                      child: Obx(() => Text(
+                            _s.to.isEmpty ? 'To' : _s.to.value,
+                            style: const TextStyle(color: Colors.white),
+                          )),
+                    ),
+                  ),
+                ],
+              ),
+
+              //for input,
+
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Container(
+                    padding: const EdgeInsets.all(16),
+                    child: Text(
+                      _speechToText.isListening
+                          ? _lastWords
+                          : _speechEnabled
+                              ? 'Tap the microphone to start listening...'
+                              : "Speech not available",
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ),
+
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 120),
+                child: FloatingActionButton(
+                  onPressed: _speechToText.isNotListening
+                      ? _startListening
+                      : _stopListening,
+                  tooltip: 'Listen',
+                  child: Icon(
+                      _speechToText.isNotListening ? Icons.mic_off : Icons.mic),
+                ),
+              )
+            ],
+          )
+
+          // SizedBox(
+          //   height: 100,
+          //   child: ListView(
+          //     scrollDirection: Axis.horizontal,
+          //     // shrinkWrap: true,
+          //     padding: const EdgeInsets.symmetric(
+          //       horizontal: 25,
+          //     ),
+          //     children: SpeechType.values
+          //         .map((e) => CustomCard(speechType: e))
+          //         .toList(),
+          //   ),
+          // ),
+          ),
     );
   }
 }
