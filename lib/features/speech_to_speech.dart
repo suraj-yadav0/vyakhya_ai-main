@@ -7,7 +7,9 @@ import 'package:speech_to_text/speech_to_text.dart';
 import 'package:vyakhya_ai/controllers/speech_to_text.dart';
 import 'package:vyakhya_ai/helper/global.dart';
 import 'package:vyakhya_ai/model/sppeech_type.dart';
+import 'package:vyakhya_ai/widgets/custom_button.dart';
 import 'package:vyakhya_ai/widgets/custom_card.dart';
+import 'package:vyakhya_ai/widgets/custom_loading.dart';
 import 'package:vyakhya_ai/widgets/widget2/speech_language_sheet.dart';
 
 class SpeechToSpeech extends StatefulWidget {
@@ -182,7 +184,42 @@ class _SpeechToSpeechState extends State<SpeechToSpeech> {
                   child: Icon(
                       _speechToText.isNotListening ? Icons.mic_off : Icons.mic),
                 ),
-              )
+              ),
+
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: mq.width * 0.04, vertical: mq.height * 0.035),
+                child: TextFormField(
+                  controller: _controller,
+                  minLines: 5,
+                  maxLines: null,
+                  style: const TextStyle(color: Colors.white),
+                  textAlign: TextAlign.center,
+                  onTapOutside: (event) => FocusScope.of(context).unfocus(),
+                  decoration: const InputDecoration(
+                      hintText: "Translate Anything You Want !",
+                      hintStyle: TextStyle(fontSize: 13.5, color: Colors.white),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10)))),
+                ),
+              ),
+
+              Obx(() => _translateResult(),),
+
+              SizedBox(height: mq.height * 0.04,),
+
+              if (_s.resultC.text.isNotEmpty)
+              Obx(
+                () => _translateResult(),
+              ),
+
+
+               SizedBox(
+              height: mq.height * 0.04,
+            ),
+
+            CustomButton(txt: "Translate", onTap: _s.googleTranslate)
+               
             ],
           )
 
@@ -202,4 +239,26 @@ class _SpeechToSpeechState extends State<SpeechToSpeech> {
           ),
     );
   }
+
+  
+  Widget _translateResult() => switch (_s.status.value) {
+        Statu.none => const SizedBox(),
+        // Condition.none => const SizedBox(),
+        Statu.complete => Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: mq.width * 0.04, vertical: mq.height * 0.035),
+            child: TextFormField(
+              controller: _s.resultC,
+              style: const TextStyle(color: Colors.white),
+              // minLines: 5,
+              maxLines: null,
+              textAlign: TextAlign.center,
+              onTapOutside: (event) => FocusScope.of(context).unfocus(),
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10)))),
+            ),
+          ),
+        Statu.loading => const Align(child: CustomLoading())
+      };
 }
