@@ -65,8 +65,8 @@ class _SpeecgToTextState extends State<SpeecgToText> {
 
 
   void _onSpeechResult(SpeechRecognitionResult result) {
-    controller.text = result.recognizedWords;
-    log(controller.text);
+    _s.res.text = result.recognizedWords;
+   // log(controller.text);
     setState(() {
       _lastWords = result.recognizedWords;
     });
@@ -210,7 +210,7 @@ class _SpeecgToTextState extends State<SpeecgToText> {
               padding: EdgeInsets.symmetric(
                   horizontal: mq.width * 0.04, vertical: mq.height * 0.035),
               child: TextFormField(
-                controller: controller,
+                controller: _s.res,
                 minLines: 5,
                 maxLines: null,
                 style: const TextStyle(color: Colors.white),
