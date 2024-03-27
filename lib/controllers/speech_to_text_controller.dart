@@ -11,8 +11,8 @@ enum Statu { none, complete, loading }
 
 class SpeechTranslatorController extends GetxController {
   // final texC = TextEditingController();
-  TextEditingController res = TextEditingController();
-  TextEditingController resultC = TextEditingController();
+  final res = TextEditingController();
+  final resultC = TextEditingController();
 
   final from = ''.obs, to = ''.obs;
 

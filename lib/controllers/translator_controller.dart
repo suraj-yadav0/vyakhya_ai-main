@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:vyakhya_ai/api/apis.dart';
 import 'package:vyakhya_ai/helper/mydialog.dart';
 
-enum Status { none , complete, loading}
+enum Status { none, complete, loading }
 
 class TranslatorController extends GetxController {
   final texC = TextEditingController();
@@ -11,7 +11,6 @@ class TranslatorController extends GetxController {
 
   final from = ''.obs, to = ''.obs;
 
-  
   final status = Status.none.obs;
 
   void swapLanguages() {
@@ -26,7 +25,10 @@ class TranslatorController extends GetxController {
     if (texC.text.trim().isNotEmpty) {
       status.value = Status.loading;
 
-      resultC.text = await APIs.googleTranslate(from: jsonLang[from.value] ?? 'auto', to: jsonLang[to.value] ?? 'en', text: texC.text);
+      resultC.text = await APIs.googleTranslate(
+          from: jsonLang[from.value] ?? 'auto',
+          to: jsonLang[to.value] ?? 'en',
+          text: texC.text);
 
       status.value = Status.complete;
     } else {

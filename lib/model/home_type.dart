@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vyakhya_ai/features/chat_bot_screen.dart';
-import 'package:vyakhya_ai/features/speech_to_speech.dart';
+import 'package:vyakhya_ai/features/speech_to_speech_screen.dart';
 import 'package:vyakhya_ai/features/speech_to_text.dart';
 import 'package:vyakhya_ai/features/text_to_text_screen.dart';
 

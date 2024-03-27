@@ -21,6 +21,11 @@ class TextToText extends StatefulWidget {
 class _TextToTextState extends State<TextToText> {
   final _c = TranslatorController();
   @override
+  void dispose() {
+    
+    super.dispose();
+  }
+  @override
   Widget build(BuildContext context) {
     return Container(
       decoration:  BoxDecoration(

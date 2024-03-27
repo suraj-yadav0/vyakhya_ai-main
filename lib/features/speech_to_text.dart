@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:speech_to_text/speech_recognition_result.dart';
 import 'package:speech_to_text/speech_to_text.dart';
-import 'package:vyakhya_ai/controllers/speech_to_text.dart';
+import 'package:vyakhya_ai/controllers/speech_to_text_controller.dart';
 
 import 'package:vyakhya_ai/helper/global.dart';
 import 'package:vyakhya_ai/model/sppeech_type.dart';
@@ -29,8 +29,9 @@ class SpeecgToText extends StatefulWidget {
 }
 
 class _SpeecgToTextState extends State<SpeecgToText> {
-  SpeechToText _speechToText = SpeechToText();
-  TextEditingController _controller = TextEditingController();
+  final _s = SpeechTranslatorController();
+  final _speechToText = SpeechToText();
+  final controller = TextEditingController();
   bool _speechEnabled = false;
   String _lastWords = "";
 
@@ -64,19 +65,19 @@ class _SpeecgToTextState extends State<SpeecgToText> {
 
 
   void _onSpeechResult(SpeechRecognitionResult result) {
-    _controller.text = result.recognizedWords;
-    log(_controller.text);
+    controller.text = result.recognizedWords;
+    log(controller.text);
     setState(() {
       _lastWords = result.recognizedWords;
     });
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  // }
 
-  final _s = SpeechTranslatorController();
+  
 
   // final _c = TranslatorController();
   @override
@@ -169,8 +170,8 @@ class _SpeecgToTextState extends State<SpeecgToText> {
 
             // for input,
 
-            Expanded(
-              child: Padding(
+            
+               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Container(
                   padding: const EdgeInsets.all(16),
@@ -188,19 +189,20 @@ class _SpeecgToTextState extends State<SpeecgToText> {
                     style: const TextStyle(color: Colors.white),
                   ),
                 ),
-              ),
+              
             ),
 
             Padding(
               padding:
                   const EdgeInsets.symmetric(vertical: 10, horizontal: 120),
               child: FloatingActionButton(
+              backgroundColor: color1,
                 onPressed: _speechToText.isNotListening
                     ? _startListening
                     : _stopListening,
                 tooltip: 'Listen',
                 child: Icon(
-                    _speechToText.isNotListening ? Icons.mic_off : Icons.mic),
+                    _speechToText.isNotListening ? Icons.mic_off : Icons.mic,color: Colors.white,),
               ),
             ),
 
@@ -208,7 +210,7 @@ class _SpeecgToTextState extends State<SpeecgToText> {
               padding: EdgeInsets.symmetric(
                   horizontal: mq.width * 0.04, vertical: mq.height * 0.035),
               child: TextFormField(
-                controller: _controller,
+                controller: controller,
                 minLines: 5,
                 maxLines: null,
                 style: const TextStyle(color: Colors.white),
