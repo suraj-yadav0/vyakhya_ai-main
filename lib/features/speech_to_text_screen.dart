@@ -235,10 +235,10 @@ class _SpeecgToTextState extends State<SpeecgToText> {
               height: mq.height * 0.04,
             ),
 
-            if (_s.resultC.text.isNotEmpty)
-              Obx(
-                () => _translateResult(),
-              ),
+            // if (_s.resultC.text.isNotEmpty)
+            //   Obx(
+            //     () => _translateResult(),
+            //   ),
 
 // I will work on you later
             // SizedBox(
