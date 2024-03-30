@@ -1,8 +1,8 @@
-import 'dart:developer';
+
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 
 import 'package:get/get.dart';
 
@@ -12,10 +12,10 @@ import 'package:speech_to_text/speech_to_text.dart';
 import 'package:vyakhya_ai/controllers/speech_to_text_controller.dart';
 
 import 'package:vyakhya_ai/helper/global.dart';
-import 'package:vyakhya_ai/model/sppeech_type.dart';
+
 
 import 'package:vyakhya_ai/widgets/custom_button.dart';
-import 'package:vyakhya_ai/widgets/custom_card.dart';
+
 
 import 'package:vyakhya_ai/widgets/custom_loading.dart';
 

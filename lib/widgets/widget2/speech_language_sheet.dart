@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vyakhya_ai/controllers/speech_to_text_controller.dart';
-import 'package:vyakhya_ai/controllers/translator_controller.dart';
+
 import 'package:vyakhya_ai/helper/global.dart';
 
 class SpeechLanguageSheet extends StatefulWidget {
