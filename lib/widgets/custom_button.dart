@@ -9,18 +9,20 @@ class CustomButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Align(
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          shape: const StadiumBorder(),
-          elevation: 0,
-          backgroundColor: color1,
-          textStyle: const TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.w500)
-        ),
-          onPressed: onTap,
-          child: Text(
-            txt,
-            style: const TextStyle(color: Colors.white),
-          )),
+      child:ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            shape: const StadiumBorder(),
+            elevation: 10,
+            
+            backgroundColor: color1,
+            textStyle: const TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.w500)
+          ),
+            onPressed: onTap,
+            child: Text(
+              txt,
+              style: const TextStyle(color: Colors.white),
+            )),
+      
     );
   }
 }
