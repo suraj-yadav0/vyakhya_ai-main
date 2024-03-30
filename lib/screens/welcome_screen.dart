@@ -22,15 +22,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        decoration: BoxDecoration(
+      //  decoration: BoxDecoration(color: Color.fromRGBO(13, 31, 45,0)),
+       decoration: BoxDecoration(
             gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
             // Color.fromARGB(255, 109, 124, 147),
-            // Colors.deepPurple,
+             // Colors.deepPurple,
   color1,
-             color2
+             color2,
+ // Color.fromRGBO(13,31,45, 255)
           ],
         )),
         child: Column(

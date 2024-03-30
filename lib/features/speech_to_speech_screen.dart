@@ -78,7 +78,7 @@ class _SpeechToSpeechState extends State<SpeechToSpeech> {
             color2,
           ])),
       child: Scaffold(
-          backgroundColor: Colors.transparent,
+          backgroundColor: primary,
           appBar: AppBar(
             title: Text(
               "Speech To Speech",
@@ -177,12 +177,13 @@ class _SpeechToSpeechState extends State<SpeechToSpeech> {
                 padding:
                     const EdgeInsets.symmetric(vertical: 10, horizontal: 120),
                 child: FloatingActionButton(
+                  backgroundColor: secondary,
                   onPressed: _speechToText.isNotListening
                       ? _startListening
                       : _stopListening,
                   tooltip: 'Listen',
                   child: Icon(
-                      _speechToText.isNotListening ? Icons.mic_off : Icons.mic),
+                      _speechToText.isNotListening ? Icons.mic_off : Icons.mic,color: Colors.white,),
                 ),
               ),
 

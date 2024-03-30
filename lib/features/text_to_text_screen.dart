@@ -127,9 +127,12 @@ class _TextToTextState extends State<TextToText> {
                 decoration: const InputDecoration(
                     hintText: "Translate Anything You Want !",
                     hintStyle: TextStyle(fontSize: 13.5, color: Colors.white),
+                    
                     border: OutlineInputBorder(
+                      
                       borderRadius: BorderRadius.all(
                         Radius.circular(10),
+                        
                       ),
                     )),
               ),
