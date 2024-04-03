@@ -71,6 +71,7 @@ flutter:
   assets:
     - assets/lottie/
     - assets/svg/
+    - assets/png/
     
 
   # An image asset can refer to one or more resolution-specific "variants", see

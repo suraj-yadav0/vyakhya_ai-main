@@ -49,11 +49,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   fontWeight: FontWeight.bold),)
             ).animate().fade(
                 duration: const Duration(seconds: 3), curve: Curves.bounceIn),
+                Container(child: Image.asset('assets/png/logo-removebg-preview.png')),
             const Spacer(),
              Text(
               textAlign: TextAlign.center,
               '"Breaking Barriers, Building Bridges:\n Your Words, Our AI. \n Seamless Translation, Limitless Communication!"',
-              style: GoogleFonts.crimsonText(textStyle: const TextStyle(
+              style: GoogleFonts.montserrat(textStyle: const TextStyle(
                   color: Colors.white,
                   fontSize: 18,
                   letterSpacing: .5,
