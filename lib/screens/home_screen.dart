@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vyakhya_ai/model/home_type.dart';
+import 'package:vyakhya_ai/widgets/AppBar%20Actions/pop_up.dart';
 import 'package:vyakhya_ai/widgets/custom_list.dart';
 import 'package:vyakhya_ai/helper/global.dart';
 
@@ -35,6 +36,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   fontWeight: FontWeight.bold),
             ),
           ),
+          actions: const [
+            PopUp()
+          ],
           centerTitle: true,
           backgroundColor: Colors.transparent,
           // flexibleSpace: Container(

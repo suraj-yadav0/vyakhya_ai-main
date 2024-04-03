@@ -19,6 +19,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: primary,
       body: Container(
         height: double.infinity,
         width: double.infinity,
@@ -32,6 +33,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
              // Colors.deepPurple,
   color1,
              color2,
+  // primaryColor
  // Color.fromRGBO(13,31,45, 255)
           ],
         )),
@@ -47,9 +49,8 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 color: Colors.white,
                   fontSize: 36,
                   fontWeight: FontWeight.bold),)
-            ).animate().fade(
-                duration: const Duration(seconds: 3), curve: Curves.bounceIn),
-                Container(child: Image.asset('assets/png/logo-removebg-preview.png')),
+            ),
+                Container(child: Image.asset('assets/png/logo-removebg-preview.png').animate().slide(duration: const Duration(seconds: 3))),
             const Spacer(),
              Text(
               textAlign: TextAlign.center,

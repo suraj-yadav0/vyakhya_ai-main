@@ -11,7 +11,7 @@ class CustomButton extends StatelessWidget {
     return Align(
       child:ElevatedButton(
           style: ElevatedButton.styleFrom(
-            shape: const StadiumBorder(),
+            shape: const StadiumBorder(side: BorderSide(style: BorderStyle.solid,strokeAlign: BorderSide.strokeAlignCenter)),
             elevation: 10,
             
             backgroundColor: secondary,

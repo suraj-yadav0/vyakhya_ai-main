@@ -74,8 +74,10 @@ class _SpeechToSpeechState extends State<SpeechToSpeech> {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-            color1,
-            color2,
+            // color1,
+            // color2,
+            primaryColor,
+            secondary
           ])),
       child: Scaffold(
           backgroundColor: primary,
@@ -173,19 +175,43 @@ class _SpeechToSpeechState extends State<SpeechToSpeech> {
                 ),
               ),
 
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 10, horizontal: 120),
-                child: FloatingActionButton(
-                  backgroundColor: secondary,
-                  onPressed: _speechToText.isNotListening
-                      ? _startListening
-                      : _stopListening,
-                  tooltip: 'Listen',
-                  child: Icon(
-                      _speechToText.isNotListening ? Icons.mic_off : Icons.mic,color: Colors.white,),
-                ),
+              Row(
+             
+                children: [
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 10, horizontal: 70),
+                    child: FloatingActionButton(
+                      backgroundColor: secondary,
+                      onPressed: _speechToText.isNotListening
+                          ? _startListening
+                          : _stopListening,
+                      tooltip: 'Listen',
+                      child: Icon(
+                          _speechToText.isNotListening ? Icons.mic_off : Icons.mic,color: Colors.white,),
+                    ),
+                  ),
+
+const Spacer(),
+
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 10, horizontal: 70),
+                    child: FloatingActionButton(
+                      backgroundColor: secondary,
+                      onPressed: _speechToText.isNotListening
+                          ? _startListening
+                          : _stopListening,
+                      tooltip: 'Listen',
+                      child: Icon(
+                          _speechToText.isNotListening ? Icons.speaker_phone_outlined : Icons.mic,color: Colors.white,),
+                    ),
+                  ),
+                ],
               ),
+
+
+              
 
               Padding(
                 padding: EdgeInsets.symmetric(

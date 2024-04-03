@@ -7,6 +7,7 @@ import 'package:get/state_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vyakhya_ai/controllers/translator_controller.dart';
 import 'package:vyakhya_ai/helper/global.dart';
+import 'package:vyakhya_ai/widgets/AppBar%20Actions/pop_up.dart';
 import 'package:vyakhya_ai/widgets/custom_button.dart';
 import 'package:vyakhya_ai/widgets/custom_loading.dart';
 import 'package:vyakhya_ai/widgets/language_sheet.dart';
@@ -22,19 +23,17 @@ class _TextToTextState extends State<TextToText> {
   final _c = TranslatorController();
   @override
   void dispose() {
-    
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration:  BoxDecoration(
+      decoration: BoxDecoration(
           gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [
-           color1,color2
-          ])),
+              colors: [color1, color2])),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
@@ -47,25 +46,9 @@ class _TextToTextState extends State<TextToText> {
                   fontWeight: FontWeight.bold),
             ),
           ),
-          actions: <Widget>[
-    PopupMenuButton<String>(
-      color: Colors.white,
-      iconColor: Colors.white,
-      onSelected: (String value) {
-        // Handle your action on selection here
-        print('Selected: $value');
-      },
-      itemBuilder: (BuildContext context) {
-        return {'Home', 'About', 'Reference','Help'}.map((String choice) {
-          return PopupMenuItem<String>(
-            value: choice,
-            
-            child: Text(choice),
-          );
-        }).toList();
-      },
-    ),
-  ],
+          actions: const [
+            PopUp(),
+          ],
           centerTitle: true,
           backgroundColor: Colors.transparent,
         ),
@@ -146,12 +129,9 @@ class _TextToTextState extends State<TextToText> {
                 decoration: const InputDecoration(
                     hintText: "Translate Anything You Want !",
                     hintStyle: TextStyle(fontSize: 13.5, color: Colors.white),
-                    
                     border: OutlineInputBorder(
-                      
                       borderRadius: BorderRadius.all(
                         Radius.circular(10),
-                        
                       ),
                     )),
               ),
