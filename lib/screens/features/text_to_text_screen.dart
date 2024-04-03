@@ -47,6 +47,25 @@ class _TextToTextState extends State<TextToText> {
                   fontWeight: FontWeight.bold),
             ),
           ),
+          actions: <Widget>[
+    PopupMenuButton<String>(
+      color: Colors.white,
+      iconColor: Colors.white,
+      onSelected: (String value) {
+        // Handle your action on selection here
+        print('Selected: $value');
+      },
+      itemBuilder: (BuildContext context) {
+        return {'Home', 'About', 'Reference','Help'}.map((String choice) {
+          return PopupMenuItem<String>(
+            value: choice,
+            
+            child: Text(choice),
+          );
+        }).toList();
+      },
+    ),
+  ],
           centerTitle: true,
           backgroundColor: Colors.transparent,
         ),
