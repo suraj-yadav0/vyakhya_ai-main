@@ -12,8 +12,10 @@
     </intent>
 </queries>
 
+<uses-permission android:name="android.permission.INTERNET"/>
+
     <application
-        android:label="vyakhya_ai"
+        android:label="Vyakhya AI"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
