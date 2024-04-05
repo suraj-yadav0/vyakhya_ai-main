@@ -43,7 +43,7 @@ dependencies:
   google_fonts: ^6.2.1
   speech_to_text: ^6.6.1
   http: ^1.2.1
-  icons_launcher: ^2.1.7
+  # icons_launcher: ^2.1.7
  
 
 dev_dependencies:
