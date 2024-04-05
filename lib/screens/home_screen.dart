@@ -61,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       homeType: e,
                     ))
                 .toList(),
-          ).animate().fade(duration: 2.seconds),
+          ).animate().fade(duration: 1.seconds),
         ),
       ),
     );

@@ -23,18 +23,18 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-      //  decoration: BoxDecoration(color: Color.fromRGBO(13, 31, 45,0)),
-       decoration: BoxDecoration(
+        //  decoration: BoxDecoration(color: Color.fromRGBO(13, 31, 45,0)),
+        decoration: BoxDecoration(
             gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
             // Color.fromARGB(255, 109, 124, 147),
-             // Colors.deepPurple,
-  color1,
-             color2,
-  // primaryColor
- // Color.fromRGBO(13,31,45, 255)
+            // Colors.deepPurple,
+            color1,
+            color2,
+            // primaryColor
+            // Color.fromRGBO(13,31,45, 255)
           ],
         )),
         child: Column(
@@ -42,26 +42,27 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Spacer(),
-             Text(
-              "Vyakhya AI",
-              style:  GoogleFonts.crimsonText(textStyle: const TextStyle(
-                //  color: Color.fromARGB(255, 205, 199, 216),
-                color: Colors.white,
-                  fontSize: 36,
-                  fontWeight: FontWeight.bold),)
-            ),
-                Container(child: Image.asset('assets/png/logo-removebg-preview.png').animate().slide(duration: const Duration(seconds: 3))),
+            Text("Vyakhya AI",
+                style: GoogleFonts.crimsonText(
+                  textStyle: const TextStyle(
+                      //  color: Color.fromARGB(255, 205, 199, 216),
+                      color: Colors.white,
+                      fontSize: 36,
+                      fontWeight: FontWeight.bold),
+                )).animate().fadeIn(duration: Duration(seconds: 1)),
+            Image.asset('assets/png/logo-removebg-preview.png'),
             const Spacer(),
-             Text(
-              textAlign: TextAlign.center,
-              '"Breaking Barriers, Building Bridges:\n Your Words, Our AI. \n Seamless Translation, Limitless Communication!"',
-              style: GoogleFonts.montserrat(textStyle: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  letterSpacing: .5,
-                  fontWeight: FontWeight.w600,
-                 ),)
-            ),
+            Text(
+                textAlign: TextAlign.center,
+                '"Breaking Barriers, Building Bridges:\n Your Words, Our AI. \n Seamless Translation, Limitless Communication!"',
+                style: GoogleFonts.montserrat(
+                  textStyle: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    letterSpacing: .5,
+                    fontWeight: FontWeight.w600,
+                  ),
+                )),
             const Spacer(),
             SizedBox(
                 height: 50,

@@ -1,5 +1,5 @@
 icons_launcher:
-  image_path: "assets/png/logo-removebg-preview.png"
+  image_path: "assets/png/logoPng.png"
   platforms:
     android:
       enable: true
