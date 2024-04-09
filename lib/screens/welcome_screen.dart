@@ -19,6 +19,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       backgroundColor: primary,
       body: Container(
         height: double.infinity,
@@ -49,20 +50,24 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       color: Colors.white,
                       fontSize: 36,
                       fontWeight: FontWeight.bold),
-                )).animate().fadeIn(duration: Duration(seconds: 1)),
-            Image.asset('assets/png/logo-removebg-preview.png'),
+                )).animate().fadeIn(duration: const Duration(seconds: 1)),
+                  const Spacer(),
+            Image.asset('assets/png/logoPng.png',width: 150,height: 150,),
             const Spacer(),
-            Text(
-                textAlign: TextAlign.center,
-                '"Breaking Barriers, Building Bridges:\n Your Words, Our AI. \n Seamless Translation, Limitless Communication!"',
-                style: GoogleFonts.montserrat(
-                  textStyle: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 18,
-                    letterSpacing: .5,
-                    fontWeight: FontWeight.w600,
-                  ),
-                )),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Text(
+                  textAlign: TextAlign.center,
+                  '"Breaking Barriers, Building Bridges:\n Your Words, Our AI. \n Seamless Translation, Limitless Communication!"',
+                  style: GoogleFonts.crimsonText(
+                    textStyle: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      letterSpacing: .5,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  )),
+            ),
             const Spacer(),
             SizedBox(
                 height: 50,
