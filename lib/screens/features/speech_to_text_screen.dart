@@ -200,7 +200,7 @@ class _SpeecgToTextState extends State<SpeecgToText> {
               padding:
                   const EdgeInsets.symmetric(vertical: 10, horizontal: 120),
               child: FloatingActionButton(
-              backgroundColor: color1,
+              backgroundColor: Colors.teal,
                 onPressed: _speechToText.isNotListening
                     ? _startListening
                     : _stopListening,

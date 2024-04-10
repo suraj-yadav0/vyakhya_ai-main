@@ -14,8 +14,8 @@ class CustomButton extends StatelessWidget {
             shape: const StadiumBorder(),
             elevation: 10,
             
-            backgroundColor: color1,
-            textStyle: const TextStyle(fontSize: 16,color: Colors.white,)
+            backgroundColor: Colors.teal,
+            textStyle: const TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.w700)
           ),
             onPressed: onTap,
             child: Text(

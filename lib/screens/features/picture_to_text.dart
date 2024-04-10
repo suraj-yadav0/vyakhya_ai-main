@@ -24,6 +24,7 @@ class ChatBotScreen extends StatefulWidget {
 
 class _ChatBotScreenState extends State<ChatBotScreen> {
   final _c = TranslatorController();
+  final controller = TextEditingController();
   File? selctedMedia;
   @override
   Widget build(BuildContext context) {
@@ -115,17 +116,19 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
               ],
             ),
 
-            Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      mainAxisSize: MainAxisSize.max,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        _imageView(),
-       const Spacer(),
-        Expanded(child: _extractTextView()),
-      ],
-    ),
+            const Spacer(),
 
+           _imageView(),
+
+            const Spacer(),
+
+            CustomButton(
+                txt: "Extract Text",
+                onTap: () {
+                  _extractText(selctedMedia!);
+                }),
+
+      
             // for input,
 
             Padding(
@@ -176,8 +179,6 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
               setState(() {
                 selctedMedia = data;
               });
-
-
             }
           },
           backgroundColor: Colors.teal,
@@ -210,7 +211,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
         Status.loading => const Align(child: CustomLoading())
       };
 
-        Widget _imageView() {
+  Widget _imageView() {
     if (selctedMedia == null) {
       return const Center(
         child: Text("Pick an Image for Text Recognition"),
@@ -225,22 +226,8 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
     }
   }
 
-    Widget _extractTextView() {
-    if (selctedMedia == null) {
-      return const Center(
-        child: Text('No result'),
-        
-      );
-    }
-
-    return FutureBuilder(
-        future: _extractText(selctedMedia!),
-        builder: (context, snapshot) {
-          return Text(snapshot.data ?? "", style: const TextStyle(fontSize: 25),);
-        });
-  }
-
-   Future<String?> _extractText(File file) async {
+  // ignore: body_might_complete_normally_nullable
+  Future<String?> _extractText(File file) async {
     final textRecognizer = TextRecognizer(
       script: TextRecognitionScript.latin,
     );
@@ -249,8 +236,10 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
     final RecognizedText recognizedText =
         await textRecognizer.processImage(inputImage);
 
-    String text = recognizedText.text;
+    // String text = recognizedText.text;
+    _c.texC.text = recognizedText.text;
     textRecognizer.close();
-    return text;
+    
+    
   }
 }
