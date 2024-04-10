@@ -11,11 +11,11 @@ class CustomButton extends StatelessWidget {
     return Align(
       child:ElevatedButton(
           style: ElevatedButton.styleFrom(
-            shape: const StadiumBorder(side: BorderSide(style: BorderStyle.solid,strokeAlign: BorderSide.strokeAlignCenter)),
+            shape: const StadiumBorder(),
             elevation: 10,
             
-            backgroundColor: secondary,
-            textStyle: const TextStyle(fontSize: 16,color: Colors.white,fontWeight: FontWeight.w500)
+            backgroundColor: color1,
+            textStyle: const TextStyle(fontSize: 16,color: Colors.white,)
           ),
             onPressed: onTap,
             child: Text(
