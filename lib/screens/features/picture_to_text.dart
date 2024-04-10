@@ -118,54 +118,17 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
 
             const Spacer(),
 
-           _imageView(),
+            _imageView(),
 
             const Spacer(),
 
-            CustomButton(
-                txt: "Extract Text",
-                onTap: () {
-                  _extractText(selctedMedia!);
-                }),
+          
 
-      
+    
+
             // for input,
 
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: mq.width * 0.04, vertical: mq.height * 0.035),
-              child: TextFormField(
-                controller: _c.texC,
-                minLines: 5,
-                maxLines: null,
-                style: const TextStyle(color: Colors.white),
-                textAlign: TextAlign.center,
-                onTapOutside: (event) => FocusScope.of(context).unfocus(),
-                decoration: const InputDecoration(
-                    hintText: "Translate Anything You Want !",
-                    hintStyle: TextStyle(fontSize: 13.5, color: Colors.white),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10),
-                      ),
-                    )),
-              ),
-            ),
-
-            Obx(
-              () => _translateResult(),
-            ),
-
-            SizedBox(
-              height: mq.height * 0.04,
-            ),
-
-            // if (_c.resultC.text.isNotEmpty)
-            //   Obx(
-            //     () => _translateResult(),
-            //   ),
-
-            CustomButton(txt: "Translate", onTap: _c.googleTranslate)
+            
           ],
         ),
         floatingActionButton: FloatingActionButton(
@@ -211,17 +174,70 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
         Status.loading => const Align(child: CustomLoading())
       };
 
-  Widget _imageView() {
+  Widget _imageView()  {
     if (selctedMedia == null) {
-      return const Center(
-        child: Text("Pick an Image for Text Recognition"),
+      return  const Padding(
+        padding: EdgeInsets.all(8.0),
+        child:  Center(
+          child: Text("Pick an Image for Text Recognition",style: TextStyle(color: Colors.white),),
+        ),
       );
     } else {
-      return Center(
-        child: Image.file(
-          selctedMedia!,
-          width: 200,
-        ),
+      return Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(15.0),
+            child: Container(
+              height: 250,
+              width: 250,
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
+              child: Center(
+                child: Image.file(
+                  selctedMedia!,
+                width: double.infinity,
+                ),
+              ),
+            ),
+          ),
+        
+            CustomButton(txt: "Extract Text", onTap: (){
+              _extractText(selctedMedia!);
+            }),
+
+            Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: mq.width * 0.04, vertical: mq.height * 0.035),
+              child: TextFormField(
+                controller: _c.texC,
+                minLines: 5,
+                maxLines: null,
+                style: const TextStyle(color: Colors.white),
+                textAlign: TextAlign.center,
+                onTapOutside: (event) => FocusScope.of(context).unfocus(),
+                decoration: const InputDecoration(
+                    hintText: "Translate Anything You Want !",
+                    hintStyle: TextStyle(fontSize: 13.5, color: Colors.white),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
+                    )),
+              ),
+            ),
+
+            Obx(
+              () => _translateResult(),
+            ),
+
+            SizedBox(
+              height: mq.height * 0.04,
+            ),
+
+          
+
+            CustomButton(txt: "Translate", onTap: _c.googleTranslate),
+           
+        ],
       );
     }
   }
@@ -236,10 +252,9 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
     final RecognizedText recognizedText =
         await textRecognizer.processImage(inputImage);
 
-    // String text = recognizedText.text;
+   // String text = recognizedText.text;
     _c.texC.text = recognizedText.text;
     textRecognizer.close();
-    
     
   }
 }
