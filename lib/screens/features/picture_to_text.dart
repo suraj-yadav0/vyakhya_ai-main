@@ -8,7 +8,7 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vyakhya_ai/controllers/translator_controller.dart';
 import 'package:vyakhya_ai/helper/global.dart';
-import 'package:vyakhya_ai/widgets/AppBar%20Actions/pop_up.dart';
+
 import 'package:vyakhya_ai/widgets/custom_button.dart';
 import 'package:vyakhya_ai/widgets/custom_loading.dart';
 import 'package:vyakhya_ai/widgets/language_sheet.dart';
@@ -50,7 +50,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
                   fontWeight: FontWeight.bold),
             ),
           ),
-          actions: const [PopUp()],
+         
           centerTitle: true,
           backgroundColor: Colors.transparent,
         ),

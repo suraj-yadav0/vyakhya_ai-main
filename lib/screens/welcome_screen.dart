@@ -73,7 +73,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 height: 50,
                 width: 250,
                 child: CustomButton(
-                  onTap: () => Get.off(() => const HomeScreen()),
+                  onTap: () => Get.to(() => const HomeScreen()),
                   txt: "Home",
                 )
 

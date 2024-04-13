@@ -12,7 +12,7 @@ import 'package:speech_to_text/speech_to_text.dart';
 import 'package:vyakhya_ai/controllers/speech_to_text_controller.dart';
 
 import 'package:vyakhya_ai/helper/global.dart';
-import 'package:vyakhya_ai/widgets/AppBar%20Actions/pop_up.dart';
+
 
 
 import 'package:vyakhya_ai/widgets/custom_button.dart';
@@ -103,9 +103,7 @@ class _SpeecgToTextState extends State<SpeecgToText> {
                   fontWeight: FontWeight.bold),
             ),
           ),
-          actions: const [
-            PopUp()
-          ],
+         
           centerTitle: true,
           backgroundColor: Colors.transparent,
         ),
