@@ -41,6 +41,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
+            iconTheme: const IconThemeData(color: Colors.white),
           title: Text(
             "Picture To Text",
             style: GoogleFonts.crimsonText(

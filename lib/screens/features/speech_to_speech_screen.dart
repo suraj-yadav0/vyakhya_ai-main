@@ -82,6 +82,7 @@ class _SpeechToSpeechState extends State<SpeechToSpeech> {
       child: Scaffold(
           backgroundColor: primary,
           appBar: AppBar(
+              iconTheme: const IconThemeData(color: Colors.white),
             title: Text(
               "Speech To Speech",
               style: GoogleFonts.crimsonText(

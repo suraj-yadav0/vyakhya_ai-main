@@ -94,6 +94,7 @@ class _SpeecgToTextState extends State<SpeecgToText> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
+            iconTheme: const IconThemeData(color: Colors.white),
           title: Text(
             "Speech To Text",
             style: GoogleFonts.crimsonText(

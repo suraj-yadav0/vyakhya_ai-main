@@ -37,6 +37,7 @@ class _TextToTextState extends State<TextToText> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
+            iconTheme: const IconThemeData(color: Colors.white),
           title: Text(
             "Text to Text",
             style: GoogleFonts.crimsonText(

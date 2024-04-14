@@ -27,6 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
               colors: [color1, color2])),
       child: Scaffold(
         appBar: AppBar(
+          iconTheme: const IconThemeData(color: Colors.white),
           title: Text(
             "Vyakhya AI",
             style: GoogleFonts.crimsonText(
@@ -61,34 +62,45 @@ class _HomeScreenState extends State<HomeScreen> {
                 .toList(),
           ).animate().fade(duration: 1.seconds),
         ),
-        drawer: Drawer(
-          backgroundColor: Colors.teal,
-          child: Column(
-            children: [
-               DrawerHeader(
-                child: Image.asset('assets/png/logoPng.png',width: 70,height: 70,)
-              ),
-              ListTile(
-                onTap: () {},
-                leading: const Icon(Icons.home,color: Colors.white,),
-                title: const Text('D A S H B O A R D',style: TextStyle(color: Colors.white),),
-              ),
-              ListTile(
-                onTap: () {},
-                leading: const Icon(Icons.info),
-                title: const Text('A B O U T'),
-              ),
-              ListTile(
-                onTap: () {},
-                leading: const Icon(Icons.settings),
-                title: const Text('S E T T I N G S'),
-              ),
-              ListTile(
-                onTap: () {},
-                leading: const Icon(Icons.logout_outlined),
-                title: const Text('L O G O U T'),
-              ),
-            ],
+        drawer: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+              color1,color2
+            ])
+          ),
+          child: Drawer(
+          // shadowColor: Colors.teal,
+            backgroundColor: Colors.transparent,
+            child: Column(
+              children: [
+                 DrawerHeader(
+                  child: Image.asset('assets/png/logoPng.png',width: 70,height: 70,)
+                ),
+                ListTile(
+                  onTap: () {},
+                  leading: const Icon(Icons.home,color: Colors.white,),
+                  title: const Text('D A S H B O A R D',style: TextStyle(color: Colors.white),),
+                ),
+                ListTile(
+                  onTap: () {},
+                  leading: const Icon(Icons.info,color: Colors.white,),
+                  title: const Text('A B O U T',style: TextStyle(color: Colors.white),),
+                ),
+                ListTile(
+                  onTap: () {},
+                  leading: const Icon(Icons.settings,color: Colors.white,),
+                  title: const Text('S E T T I N G S',style: TextStyle(color: Colors.white),),
+                ),
+                ListTile(
+                  onTap: () {},
+                  leading: const Icon(Icons.logout_outlined,color: Colors.white,),
+                  title: const Text('L O G O U T',style: TextStyle(color: Colors.white),),
+                ),
+              ],
+            ),
           ),
         ),
       ),
