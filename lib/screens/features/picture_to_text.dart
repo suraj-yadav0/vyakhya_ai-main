@@ -31,12 +31,12 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
     return Container(
       decoration: BoxDecoration(
           gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
               colors: [
             // Color.fromARGB(255, 34, 31, 44),
             // Color.fromARGB(255, 156, 189, 188),
-            primary, secondary
+          color1,color2
           ])),
       child: Scaffold(
         backgroundColor: Colors.transparent,

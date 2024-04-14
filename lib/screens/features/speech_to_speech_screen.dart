@@ -74,13 +74,12 @@ class _SpeechToSpeechState extends State<SpeechToSpeech> {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-            // color1,
-            // color2,
-            primaryColor,
-            secondary
+            color1,
+            color2,
+           
           ])),
       child: Scaffold(
-          backgroundColor: primary,
+          backgroundColor: Colors.transparent,
           appBar: AppBar(
               iconTheme: const IconThemeData(color: Colors.white),
             title: Text(
