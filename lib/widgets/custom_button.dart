@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vyakhya_ai/helper/global.dart';
+
 
 class CustomButton extends StatelessWidget {
   final String txt;
