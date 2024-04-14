@@ -7,6 +7,14 @@ class AboutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CustomDrawerScreen(title: 'A b o u t');
+    return const CustomDrawerScreen(
+      title: 'A b o u t',
+      body: Center(
+        child: Text(
+          "THE ABOUT SECTION",
+          style: TextStyle(color: Colors.white),
+        ),
+      ),
+    );
   }
 }

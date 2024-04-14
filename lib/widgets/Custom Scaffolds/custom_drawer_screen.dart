@@ -3,7 +3,8 @@ import 'package:vyakhya_ai/helper/global.dart';
 
 class CustomDrawerScreen extends StatelessWidget {
   final String title;
-  const CustomDrawerScreen({super.key, required this.title});
+  final Widget body;
+  const CustomDrawerScreen({super.key, required this.title, required this.body});
 
   @override
   Widget build(BuildContext context) {
@@ -24,12 +25,7 @@ class CustomDrawerScreen extends StatelessWidget {
           ),
           centerTitle: true,
         ),
-        body: const Center(
-          child: Text(
-            "THE ABOUT SECTION",
-            style: TextStyle(color: Colors.white),
-          ),
-        ),
+        body: body,
       ),
     );
   }
