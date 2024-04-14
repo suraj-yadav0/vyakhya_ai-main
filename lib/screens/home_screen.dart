@@ -4,6 +4,9 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vyakhya_ai/model/home_type.dart';
 import 'package:vyakhya_ai/screens/drawer%20Screens/about_screen.dart';
+import 'package:vyakhya_ai/screens/drawer%20Screens/dashboard_screen.dart';
+import 'package:vyakhya_ai/screens/drawer%20Screens/logout_screen.dart';
+import 'package:vyakhya_ai/screens/drawer%20Screens/seettings_screen.dart';
 
 import 'package:vyakhya_ai/widgets/custom_list.dart';
 import 'package:vyakhya_ai/helper/global.dart';
@@ -82,7 +85,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 70,
                 )),
                 ListTile(
-                  onTap: () {},
+                  onTap: () {
+                    Get.to(const DashboardScreen());
+                  },
                   leading: const Icon(
                     Icons.home,
                     color: Colors.white,
@@ -106,7 +111,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 ListTile(
-                  onTap: () {},
+                  onTap: () {
+                    Get.to(const SeettingsScreen());
+                  },
                   leading: const Icon(
                     Icons.settings,
                     color: Colors.white,
@@ -117,7 +124,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 ListTile(
-                  onTap: () {},
+                  onTap: () {
+                    Get.to(const LogoutScreen());
+                  },
                   leading: const Icon(
                     Icons.logout_outlined,
                     color: Colors.white,

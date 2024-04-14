@@ -6,9 +6,9 @@ class LogoutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CustomDrawerScreen(title: "L o g O u t", body: Center(
+    return const CustomDrawerScreen(title: "L o g o u t", body: Center(
         child: Text(
-          "Login Again Will be Displayed Here.",
+          "Login Again Will be Displayed Here.!!!",
           style: TextStyle(color: Colors.white),
         ),
       ),);
