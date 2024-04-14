@@ -1,20 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:vyakhya_ai/helper/global.dart';
+import 'package:vyakhya_ai/widgets/Custom%20Scaffolds/custom_drawer_screen.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.white),
-        title: const Text(
-          'A B O U T',
-          style: TextStyle(color: Colors.white),
-        ),
-        centerTitle: true,
-      ),
-body: const Center(child: Text("THE ABOUT SECTION"),),
-    );
+    return const CustomDrawerScreen(title: 'A b o u t');
   }
 }
