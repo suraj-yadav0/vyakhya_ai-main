@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vyakhya_ai/model/home_type.dart';
+import 'package:vyakhya_ai/screens/drawer%20Screens/about_screen.dart';
 
 import 'package:vyakhya_ai/widgets/custom_list.dart';
 import 'package:vyakhya_ai/helper/global.dart';
@@ -60,44 +62,70 @@ class _HomeScreenState extends State<HomeScreen> {
                       homeType: e,
                     ))
                 .toList(),
-          ).animate().fade(duration: 1.seconds),
+          ).animate().fade(duration: NumDurationExtensions(1).seconds),
         ),
         drawer: Container(
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-              color1,color2
-            ])
-          ),
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [color1, color2])),
           child: Drawer(
-          // shadowColor: Colors.teal,
+            // shadowColor: Colors.teal,
             backgroundColor: Colors.transparent,
             child: Column(
               children: [
-                 DrawerHeader(
-                  child: Image.asset('assets/png/logoPng.png',width: 70,height: 70,)
+                DrawerHeader(
+                    child: Image.asset(
+                  'assets/png/logoPng.png',
+                  width: 70,
+                  height: 70,
+                )),
+                ListTile(
+                  onTap: () {},
+                  leading: const Icon(
+                    Icons.home,
+                    color: Colors.white,
+                  ),
+                  title: const Text(
+                    'D A S H B O A R D',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                ListTile(
+                  onTap: () {
+                    Get.to(const AboutScreen());
+                  },
+                  leading: const Icon(
+                    Icons.info,
+                    color: Colors.white,
+                  ),
+                  title: const Text(
+                    'A B O U T',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
                 ListTile(
                   onTap: () {},
-                  leading: const Icon(Icons.home,color: Colors.white,),
-                  title: const Text('D A S H B O A R D',style: TextStyle(color: Colors.white),),
+                  leading: const Icon(
+                    Icons.settings,
+                    color: Colors.white,
+                  ),
+                  title: const Text(
+                    'S E T T I N G S',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
                 ListTile(
                   onTap: () {},
-                  leading: const Icon(Icons.info,color: Colors.white,),
-                  title: const Text('A B O U T',style: TextStyle(color: Colors.white),),
-                ),
-                ListTile(
-                  onTap: () {},
-                  leading: const Icon(Icons.settings,color: Colors.white,),
-                  title: const Text('S E T T I N G S',style: TextStyle(color: Colors.white),),
-                ),
-                ListTile(
-                  onTap: () {},
-                  leading: const Icon(Icons.logout_outlined,color: Colors.white,),
-                  title: const Text('L O G O U T',style: TextStyle(color: Colors.white),),
+                  leading: const Icon(
+                    Icons.logout_outlined,
+                    color: Colors.white,
+                  ),
+                  title: const Text(
+                    'L O G O U T',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ],
             ),
