@@ -21,7 +21,7 @@ class CustomDrawerScreen extends StatelessWidget {
           iconTheme: const IconThemeData(color: Colors.white),
           title: Text(
             title,
-            style: const TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
           ),
           centerTitle: true,
         ),

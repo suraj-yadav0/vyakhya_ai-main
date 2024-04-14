@@ -15,11 +15,11 @@ class AboutScreen extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(15.0),
             child: Text(
-              "Vyakya AI v.0.0",
+              "Vyakya AI",
               style: TextStyle(
-                  color: Colors.teal,
+                  color: Colors.white,
                   fontSize: 50,
-                  fontWeight: FontWeight.bold,
+                  fontWeight: FontWeight.w700,
                   wordSpacing: 4.5),
             ),
           ),
@@ -39,7 +39,7 @@ class AboutScreen extends StatelessWidget {
           ),
           Text(
             "Developed By :",
-            style: TextStyle(color: Colors.white, fontSize: 20, wordSpacing: 2),
+            style: TextStyle(color: Colors.teal, fontSize: 20, wordSpacing: 2),
           ),
           SizedBox(
             height: 20,
@@ -49,21 +49,21 @@ class AboutScreen extends StatelessWidget {
             child: Text(
               "S U R A J Y A D A V",
               style: TextStyle(
-                  color: Colors.teal,
+                  color: Colors.white,
                   fontSize: 35,
                   fontWeight: FontWeight.bold,
                   wordSpacing: 4.5),
             ),
           ),
            SizedBox(
-            height: 10,
+            height: 5,
           ),
            Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(4.0),
             child: Text(
               "(2129753)",
               style: TextStyle(
-                  color: Colors.teal,
+                  color: Colors.white,
                   fontSize: 35,
                   fontWeight: FontWeight.bold,
                   wordSpacing: 4.5),
