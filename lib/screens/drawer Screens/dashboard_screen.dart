@@ -15,7 +15,7 @@ class DashboardScreen extends StatelessWidget {
                 name: "Speech To Speech",
                 description: "Try working for atleast one language.")
           ],
-        )
+        ),
 
         //
         // Center(
