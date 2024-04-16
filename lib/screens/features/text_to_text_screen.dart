@@ -173,6 +173,9 @@ class _TextToTextState extends State<TextToText> {
               textAlign: TextAlign.center,
               onTapOutside: (event) => FocusScope.of(context).unfocus(),
               decoration: const InputDecoration(
+                
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white)),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10)))),
             ),

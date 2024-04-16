@@ -224,9 +224,13 @@ const Spacer(),
                   textAlign: TextAlign.center,
                   onTapOutside: (event) => FocusScope.of(context).unfocus(),
                   decoration: const InputDecoration(
+                    
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white)),
                       hintText: "Translate Anything You Want !",
                       hintStyle: TextStyle(fontSize: 13.5, color: Colors.white),
                       border: OutlineInputBorder(
+                        
                           borderRadius: BorderRadius.all(Radius.circular(10)))),
                 ),
               ),
@@ -282,6 +286,9 @@ const Spacer(),
               textAlign: TextAlign.center,
               onTapOutside: (event) => FocusScope.of(context).unfocus(),
               decoration: const InputDecoration(
+                
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white)),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(10)))),
             ),
