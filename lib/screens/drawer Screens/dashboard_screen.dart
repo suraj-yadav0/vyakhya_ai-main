@@ -6,11 +6,35 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CustomDrawerScreen(title: "D a s h b o a r d", body: Center(
-        child: Text(
-          "Custom Dashboard will be displayed Here.",
-          style: TextStyle(color: Colors.white),
-        ),
-      ),);
+    return CustomDrawerScreen(
+        title: "D a s h b o a r d",
+        body: ListView.builder(
+          padding: const EdgeInsets.only(left: 10,right: 10,top: 10),
+          itemCount: 4,
+          itemBuilder: (context, index) {
+            return ListTile(
+              onTap: () {
+                
+              },
+              title: Text(
+                "Feature ${index +1 } ",
+                style: const TextStyle(color: Colors.white),
+              ),
+              subtitle: const Text(
+                "Working on It.",
+                style: TextStyle(color: Colors.grey),
+              ),
+            );
+          },
+        )
+
+        //
+        // Center(
+        //   child: Text(
+        //     "Custom Dashboard will be displayed Here.",
+        //     style: TextStyle(color: Colors.white),
+        //   ),
+        // ),
+        );
   }
 }

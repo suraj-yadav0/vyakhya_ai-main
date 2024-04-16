@@ -7,6 +7,7 @@ import 'package:vyakhya_ai/screens/drawer%20Screens/about_screen.dart';
 import 'package:vyakhya_ai/screens/drawer%20Screens/dashboard_screen.dart';
 import 'package:vyakhya_ai/screens/drawer%20Screens/logout_screen.dart';
 import 'package:vyakhya_ai/screens/drawer%20Screens/seettings_screen.dart';
+import 'package:vyakhya_ai/screens/welcome_screen.dart';
 
 import 'package:vyakhya_ai/widgets/custom_list.dart';
 import 'package:vyakhya_ai/helper/global.dart';
@@ -125,7 +126,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 ListTile(
                   onTap: () {
-                    Get.to(const LogoutScreen());
+                    Get.to(const WelcomeScreen());
                   },
                   leading: const Icon(
                     Icons.logout_outlined,
