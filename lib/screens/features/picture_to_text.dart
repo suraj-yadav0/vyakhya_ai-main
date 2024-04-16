@@ -36,122 +36,159 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
               colors: [
             // Color.fromARGB(255, 34, 31, 44),
             // Color.fromARGB(255, 156, 189, 188),
-          color1,color2
+            color1, color2
           ])),
       child: Scaffold(
-        backgroundColor: Colors.transparent,
-        appBar: AppBar(
-            iconTheme: const IconThemeData(color: Colors.white),
-          title: Text(
-            "Picture To Text",
-            style: GoogleFonts.crimsonText(
-              textStyle: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 26,
-                  fontWeight: FontWeight.bold),
-            ),
-          ),
-         
-          centerTitle: true,
           backgroundColor: Colors.transparent,
-        ),
-        body: ListView(
-          physics: const BouncingScrollPhysics(),
-          padding:
-              EdgeInsets.only(top: mq.height * 0.02, bottom: mq.width * 0.01),
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // From Section
-                InkWell(
-                  onTap: () =>
-                      Get.bottomSheet(LanguageSheet(c: _c, s: _c.from)),
-                  borderRadius: const BorderRadius.all(Radius.circular(15)),
-                  child: Container(
-                      height: 50,
-                      alignment: Alignment.center,
-                      width: mq.width * .4,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(15))),
-                      child: Obx(
-                        () => Text(
-                          _c.from.isEmpty ? 'Auto' : _c.from.value,
-                          style: const TextStyle(color: Colors.white),
-                        ),
+          appBar: AppBar(
+            iconTheme: const IconThemeData(color: Colors.white),
+            title: Text(
+              "Picture To Text",
+              style: GoogleFonts.crimsonText(
+                textStyle: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+            centerTitle: true,
+            backgroundColor: Colors.transparent,
+          ),
+          body: ListView(
+            physics: const BouncingScrollPhysics(),
+            padding:
+                EdgeInsets.only(top: mq.height * 0.02, bottom: mq.width * 0.01),
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // From Section
+                  InkWell(
+                    onTap: () =>
+                        Get.bottomSheet(LanguageSheet(c: _c, s: _c.from)),
+                    borderRadius: const BorderRadius.all(Radius.circular(15)),
+                    child: Container(
+                        height: 50,
+                        alignment: Alignment.center,
+                        width: mq.width * .4,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(15))),
+                        child: Obx(
+                          () => Text(
+                            _c.from.isEmpty ? 'Auto' : _c.from.value,
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                        )),
+                  ),
+
+                  // Swap Button
+                  IconButton(
+                      onPressed: _c.swapLanguages,
+                      icon: Obx(
+                        () => Icon(CupertinoIcons.repeat,
+                            color: _c.to.isNotEmpty && _c.from.isNotEmpty
+                                ? Colors.blue
+                                : Colors.grey),
                       )),
+
+                  //To Section,
+
+                  InkWell(
+                    onTap: () =>
+                        Get.bottomSheet(LanguageSheet(c: _c, s: _c.to)),
+                    borderRadius: const BorderRadius.all(Radius.circular(15)),
+                    child: Container(
+                        height: 50,
+                        alignment: Alignment.center,
+                        width: mq.width * .4,
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(15))),
+                        child: Obx(
+                          () => Text(
+                            _c.to.isEmpty ? 'To' : _c.to.value,
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                        )),
+                  ),
+                ],
+              ),
+
+              const Spacer(),
+
+              _imageView(),
+
+              const Spacer(),
+
+              // for input,
+            ],
+          ),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerFloat,
+          floatingActionButton: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                FloatingActionButton(
+                  backgroundColor: Colors.teal,
+                  onPressed: () async {
+                    List<MediaFile>? media = await GalleryPicker.pickMedia(
+                      context: context,
+                      //i WILL CONTINUE FROM here.
+                    );
+                  },
+                  child: const Icon(
+                    Icons.camera,
+                    color: Colors.white,
+                  ),
                 ),
+                FloatingActionButton(
+                  backgroundColor: Colors.teal,
+                  onPressed: () async {
+                    List<MediaFile>? media = await GalleryPicker.pickMedia(
+                        context: context, singleMedia: true);
 
-                // Swap Button
-                IconButton(
-                    onPressed: _c.swapLanguages,
-                    icon: Obx(
-                      () => Icon(CupertinoIcons.repeat,
-                          color: _c.to.isNotEmpty && _c.from.isNotEmpty
-                              ? Colors.blue
-                              : Colors.grey),
-                    )),
+                    if (media != null && media.isNotEmpty) {
+                      var data = await media.first.getFile();
 
-                //To Section,
-
-                InkWell(
-                  onTap: () => Get.bottomSheet(LanguageSheet(c: _c, s: _c.to)),
-                  borderRadius: const BorderRadius.all(Radius.circular(15)),
-                  child: Container(
-                      height: 50,
-                      alignment: Alignment.center,
-                      width: mq.width * .4,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey),
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(15))),
-                      child: Obx(
-                        () => Text(
-                          _c.to.isEmpty ? 'To' : _c.to.value,
-                          style: const TextStyle(color: Colors.white),
-                        ),
-                      )),
-                ),
+                      setState(() {
+                        selctedMedia = data;
+                      });
+                    }
+                  },
+                  child: const Icon(
+                    Icons.image,
+                    color: Colors.white,
+                  ),
+                )
               ],
             ),
+          )
+          // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+          // floatingActionButton: FloatingActionButton(
+          //   onPressed: () async {
+          //     List<MediaFile>? media = await GalleryPicker.pickMedia(
+          //         context: context, singleMedia: true);
 
-            const Spacer(),
+          //     if (media != null && media.isNotEmpty) {
+          //       var data = await media.first.getFile();
 
-            _imageView(),
-
-            const Spacer(),
-
-          
-
-    
-
-            // for input,
-
-            
-          ],
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () async {
-            List<MediaFile>? media = await GalleryPicker.pickMedia(
-                context: context, singleMedia: true);
-
-            if (media != null && media.isNotEmpty) {
-              var data = await media.first.getFile();
-
-              setState(() {
-                selctedMedia = data;
-              });
-            }
-          },
-          backgroundColor: Colors.teal,
-          child: const Icon(
-            Icons.add,
-            color: Colors.white,
+          //       setState(() {
+          //         selctedMedia = data;
+          //       });
+          //     }
+          //   },
+          //   backgroundColor: Colors.teal,
+          //   child: const Icon(
+          //     Icons.add,
+          //     color: Colors.white,
+          //   ),
+          // ),
           ),
-        ),
-      ),
     );
   }
 
@@ -175,12 +212,15 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
         Status.loading => const Align(child: CustomLoading())
       };
 
-  Widget _imageView()  {
+  Widget _imageView() {
     if (selctedMedia == null) {
-      return  const Padding(
-        padding: EdgeInsets.all(8.0),
-        child:  Center(
-          child: Text("Pick an Image for Text Recognition",style: TextStyle(color: Colors.white),),
+      return const Padding(
+        padding: EdgeInsets.all(20.0),
+        child: Center(
+          child: Text(
+            "Pick an Image for Text Recognition",
+            style: TextStyle(color: Colors.white, fontSize: 18),
+          ),
         ),
       );
     } else {
@@ -191,56 +231,50 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
             child: Container(
               height: 250,
               width: 250,
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(20)),
               child: Center(
                 child: Image.file(
                   selctedMedia!,
-                width: double.infinity,
+                  width: double.infinity,
                 ),
               ),
             ),
           ),
-        
-            CustomButton(txt: "Extract Text", onTap: (){
-              _extractText(selctedMedia!);
-            }),
-
-            Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: mq.width * 0.04, vertical: mq.height * 0.035),
-              child: TextFormField(
-                controller: _c.texC,
-                minLines: 5,
-                maxLines: null,
-                style: const TextStyle(color: Colors.white),
-                textAlign: TextAlign.center,
-                onTapOutside: (event) => FocusScope.of(context).unfocus(),
-                decoration: const InputDecoration(
-                  
+          CustomButton(
+              txt: "Extract Text",
+              onTap: () {
+                _extractText(selctedMedia!);
+              }),
+          Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: mq.width * 0.04, vertical: mq.height * 0.035),
+            child: TextFormField(
+              controller: _c.texC,
+              minLines: 5,
+              maxLines: null,
+              style: const TextStyle(color: Colors.white),
+              textAlign: TextAlign.center,
+              onTapOutside: (event) => FocusScope.of(context).unfocus(),
+              decoration: const InputDecoration(
                   focusedBorder: OutlineInputBorder(
                       borderSide: BorderSide(color: Colors.white)),
-                    hintText: "Translate Anything You Want !",
-                    hintStyle: TextStyle(fontSize: 13.5, color: Colors.white),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10),
-                      ),
-                    )),
-              ),
+                  hintText: "Translate Anything You Want !",
+                  hintStyle: TextStyle(fontSize: 13.5, color: Colors.white),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                  )),
             ),
-
-            Obx(
-              () => _translateResult(),
-            ),
-
-            SizedBox(
-              height: mq.height * 0.04,
-            ),
-
-          
-
-            CustomButton(txt: "Translate", onTap: _c.googleTranslate),
-           
+          ),
+          Obx(
+            () => _translateResult(),
+          ),
+          SizedBox(
+            height: mq.height * 0.04,
+          ),
+          CustomButton(txt: "Translate", onTap: _c.googleTranslate),
         ],
       );
     }
@@ -256,9 +290,8 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
     final RecognizedText recognizedText =
         await textRecognizer.processImage(inputImage);
 
-   // String text = recognizedText.text;
+    // String text = recognizedText.text;
     _c.texC.text = recognizedText.text;
     textRecognizer.close();
-    
   }
 }
