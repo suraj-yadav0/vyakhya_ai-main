@@ -199,12 +199,10 @@ const Spacer(),
                         const EdgeInsets.symmetric(vertical: 10, horizontal: 60),
                     child: FloatingActionButton(
                       backgroundColor: Colors.teal,
-                      onPressed: _speechToText.isNotListening
-                          ? _startListening
-                          : _stopListening,
+                     onPressed: (){},
                       tooltip: 'Listen',
                       child: Icon(
-                          _speechToText.isNotListening ? Icons.speaker_phone_outlined : Icons.mic,color: Colors.white,),
+                          _speechToText.isNotListening ? Icons.speaker_group_outlined: Icons.speaker_notes_off,color: Colors.white,),
                     ),
                   ),
                 ],
