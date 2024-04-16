@@ -37,7 +37,7 @@ class _TextToTextState extends State<TextToText> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-            iconTheme: const IconThemeData(color: Colors.white),
+          iconTheme: const IconThemeData(color: Colors.white),
           title: Text(
             "Text to Text",
             style: GoogleFonts.crimsonText(
@@ -47,7 +47,6 @@ class _TextToTextState extends State<TextToText> {
                   fontWeight: FontWeight.bold),
             ),
           ),
-         
           centerTitle: true,
           backgroundColor: Colors.transparent,
         ),
@@ -126,13 +125,18 @@ class _TextToTextState extends State<TextToText> {
                 textAlign: TextAlign.center,
                 onTapOutside: (event) => FocusScope.of(context).unfocus(),
                 decoration: const InputDecoration(
-                    hintText: "Translate Anything You Want !",
-                    hintStyle: TextStyle(fontSize: 13.5, color: Colors.white),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10),
-                      ),
-                    )),
+                  
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white)),
+                  hintText: "Translate Anything You Want !",
+                  hintStyle: TextStyle(fontSize: 13.5, color: Colors.white),
+                  border: OutlineInputBorder(
+                    
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                  ),
+                ),
               ),
             ),
 

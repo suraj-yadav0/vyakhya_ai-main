@@ -13,7 +13,13 @@ class DashboardScreen extends StatelessWidget {
           children: [
             CustomFeatureDashboard(
                 name: "Speech To Speech",
-                description: "Try working for atleast one language.")
+                description: "Try working for atleast one language."),
+                 CustomFeatureDashboard(
+                name: "Offline Mode",
+                description: "Try making language pack mode available."),
+                  CustomFeatureDashboard(
+                name: "Rephrasing System",
+                description: "Try making a Rephrasing System and also Suggestion System.")
           ],
         ),
 

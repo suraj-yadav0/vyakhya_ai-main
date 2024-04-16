@@ -182,7 +182,7 @@ class _SpeechToSpeechState extends State<SpeechToSpeech> {
                     padding:
                         const EdgeInsets.symmetric(vertical: 10, horizontal: 60),
                     child: FloatingActionButton(
-                      backgroundColor: secondary,
+                      backgroundColor: Colors.teal,
                       onPressed: _speechToText.isNotListening
                           ? _startListening
                           : _stopListening,
@@ -198,7 +198,7 @@ const Spacer(),
                     padding:
                         const EdgeInsets.symmetric(vertical: 10, horizontal: 60),
                     child: FloatingActionButton(
-                      backgroundColor: secondary,
+                      backgroundColor: Colors.teal,
                       onPressed: _speechToText.isNotListening
                           ? _startListening
                           : _stopListening,
