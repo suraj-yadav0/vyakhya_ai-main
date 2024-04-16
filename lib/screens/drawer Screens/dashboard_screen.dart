@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vyakhya_ai/model/dummyData/feature_model.dart';
 import 'package:vyakhya_ai/widgets/Custom%20Scaffolds/custom_drawer_screen.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -6,26 +7,14 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomDrawerScreen(
+    return const CustomDrawerScreen(
         title: "D a s h b o a r d",
-        body: ListView.builder(
-          padding: const EdgeInsets.only(left: 10,right: 10,top: 10),
-          itemCount: 4,
-          itemBuilder: (context, index) {
-            return ListTile(
-              onTap: () {
-                
-              },
-              title: Text(
-                "Feature ${index +1 } ",
-                style: const TextStyle(color: Colors.white),
-              ),
-              subtitle: const Text(
-                "Working on It.",
-                style: TextStyle(color: Colors.grey),
-              ),
-            );
-          },
+        body: Column(
+          children: [
+            CustomFeatureDashboard(
+                name: "Speech To Speech",
+                description: "Try working for atleast one language.")
+          ],
         )
 
         //
