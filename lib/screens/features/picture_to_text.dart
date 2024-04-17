@@ -2,10 +2,12 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:vyakhya_ai/controllers/translator_controller.dart';
 import 'package:vyakhya_ai/helper/global.dart';
 
@@ -26,6 +28,21 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
   final _c = TranslatorController();
   final controller = TextEditingController();
   File? selctedMedia;
+
+  Future pickImage() async {
+    try {
+      final selctedMedia =
+          await ImagePicker().pickImage(source: ImageSource.camera);
+      if (selctedMedia == null) return;
+      final imageTemp = File(selctedMedia.path);
+      setState(() {
+        this.selctedMedia = imageTemp;
+      });
+    } on PlatformException catch (e) {
+      print("Failed to Catch Image $e");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -136,10 +153,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
                 FloatingActionButton(
                   backgroundColor: Colors.teal,
                   onPressed: () async {
-                    List<MediaFile>? media = await GalleryPicker.pickMedia(
-                      context: context,
-                      //i WILL CONTINUE FROM here.
-                    );
+                    pickImage();
                   },
                   child: const Icon(
                     Icons.camera,
@@ -214,14 +228,24 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
 
   Widget _imageView() {
     if (selctedMedia == null) {
-      return const Padding(
-        padding: EdgeInsets.all(20.0),
-        child: Center(
-          child: Text(
-            "Pick an Image for Text Recognition",
-            style: TextStyle(color: Colors.white, fontSize: 18),
+      return Column(
+        children: [
+          const Padding(
+            padding: EdgeInsets.all(20.0),
+            child: Center(
+              child: Text(
+                "Pick an Image for Text Recognition",
+                style: TextStyle(color: Colors.white, fontSize: 18),
+              ),
+            ),
           ),
-        ),
+          const Spacer(),
+          Image.asset(
+            'assets/png/logoPng.png',
+            width: 150,
+            height: 150,
+          ),
+        ],
       );
     } else {
       return Column(
