@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:vyakhya_ai/api/apis.dart';
@@ -13,6 +15,29 @@ class TranslatorController extends GetxController {
 
   final status = Status.none.obs;
 
+  Future<void> translate() async {
+    if (texC.text.trim().isNotEmpty && to.isNotEmpty) {
+      status.value = Status.loading;
+      String promt = '';
+
+      if (from.isNotEmpty) {
+        promt =
+            'Can you translate given text from ${from.value} to ${to.value}:\n ${texC.text}';
+      } else {
+        promt = 'Can you translate given text to ${to.value}:\n ${texC.text}';
+      }
+
+      final res = await APIs.getAnswer(promt);
+      resultC.text = utf8.decode(res.codeUnits);
+
+      status.value = Status.complete;
+    } else {
+      status.value = Status.none;
+      if (to.isEmpty) MyDialog.info('Select To Language!');
+      MyDialog.info('Please Ask Something !');
+    }
+  }
+
   void swapLanguages() {
     if (to.isNotEmpty && from.isNotEmpty) {
       final t = to.value;
@@ -20,6 +45,7 @@ class TranslatorController extends GetxController {
       from.value = t;
     }
   }
+
 
   Future<void> googleTranslate() async {
     if (texC.text.trim().isNotEmpty) {

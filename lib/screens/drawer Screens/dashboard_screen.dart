@@ -22,7 +22,7 @@ class DashboardScreen extends StatelessWidget {
                 description: "Try making a Rephrasing System and also Suggestion System."),
                 CustomFeatureDashboard(
                 name: "User Authentication",
-                description: "Implement Authentication feature for Users to LogIN and Save their data locally or on cloud.")
+                description: "Implement Authentication feature for Users to LogIN and Save their data locally or on cloud.,")
           ],
         ),
 

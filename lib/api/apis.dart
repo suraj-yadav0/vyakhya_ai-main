@@ -42,4 +42,6 @@ class APIs {
       return "Something went Wrong";
     }
   }
+
+  
 }
