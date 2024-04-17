@@ -51,6 +51,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       fontSize: 36,
                       fontWeight: FontWeight.bold),
                 )).animate().fadeIn(duration: const Duration(seconds: 1)),
+               const   Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                "Powered by GPT 3",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                    wordSpacing: 2.5),
+              ),
+            ),
                   const Spacer(),
             Image.asset('assets/png/logoPng.png',width: 150,height: 150,),
             const Spacer(),

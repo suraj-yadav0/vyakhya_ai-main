@@ -24,6 +24,17 @@ class AboutScreen extends StatelessWidget {
                     wordSpacing: 4.5),
               ),
             ),
+             Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text(
+                "Powered by GPT 3",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                    wordSpacing: 4.5),
+              ),
+            ),
             SizedBox(
               height: 20,
             ),

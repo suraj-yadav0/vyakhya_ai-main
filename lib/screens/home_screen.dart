@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:vyakhya_ai/model/home_type.dart';
 import 'package:vyakhya_ai/screens/drawer%20Screens/about_screen.dart';
 import 'package:vyakhya_ai/screens/drawer%20Screens/dashboard_screen.dart';
+import 'package:vyakhya_ai/screens/drawer%20Screens/help_screen.dart';
 import 'package:vyakhya_ai/screens/drawer%20Screens/logout_screen.dart';
 import 'package:vyakhya_ai/screens/drawer%20Screens/seettings_screen.dart';
 import 'package:vyakhya_ai/screens/welcome_screen.dart';
@@ -121,6 +122,30 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   title: const Text(
                     'S E T T I N G S',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                ListTile(
+                  onTap: () {
+                    Get.to(const HelpScreen());
+                  },
+                  leading: const Icon(
+                    Icons.help,
+                    color: Colors.white,
+                  ),
+                  title: const Text(
+                    "H E L P",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                ListTile(
+                  onTap: () {},
+                  leading: const Icon(
+                    Icons.feedback,
+                    color: Colors.white,
+                  ),
+                  title: const Text(
+                    "F E E D B A C K",
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
