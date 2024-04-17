@@ -182,26 +182,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
               ],
             ),
           )
-          // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-          // floatingActionButton: FloatingActionButton(
-          //   onPressed: () async {
-          //     List<MediaFile>? media = await GalleryPicker.pickMedia(
-          //         context: context, singleMedia: true);
-
-          //     if (media != null && media.isNotEmpty) {
-          //       var data = await media.first.getFile();
-
-          //       setState(() {
-          //         selctedMedia = data;
-          //       });
-          //     }
-          //   },
-          //   backgroundColor: Colors.teal,
-          //   child: const Icon(
-          //     Icons.add,
-          //     color: Colors.white,
-          //   ),
-          // ),
+        
           ),
     );
   }
@@ -239,7 +220,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
               ),
             ),
           ),
-          const Spacer(),
+         
           Image.asset(
             'assets/png/logoPng.png',
             width: 150,
