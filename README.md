@@ -104,9 +104,10 @@ Please adhere to this project's `code of conduct`.
 ## Features
 
 - Light/dark mode toggle
-- ChatBot
 - Text To Text Translator
 - Speech to Text Translator
+- Speech to Text Translator
+- Picture to Text Translator
 - Cross platform
 
 
