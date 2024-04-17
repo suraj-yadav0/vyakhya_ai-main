@@ -19,7 +19,10 @@ class DashboardScreen extends StatelessWidget {
                 description: "Try making language pack mode available."),
                   CustomFeatureDashboard(
                 name: "Rephrasing System",
-                description: "Try making a Rephrasing System and also Suggestion System.")
+                description: "Try making a Rephrasing System and also Suggestion System."),
+                CustomFeatureDashboard(
+                name: "User Authentication",
+                description: "Implement Authentication feature for Users to LogIN and Save their data locally or on cloud.")
           ],
         ),
 
