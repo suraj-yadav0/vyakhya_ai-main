@@ -108,7 +108,7 @@ Please adhere to this project's `code of conduct`.
 
 ## Features
 
-- Light/dark mode toggle
+
 - Text To Text Translator
 - Speech to Text Translator
 - Speech to Text Translator
