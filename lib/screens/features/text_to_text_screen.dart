@@ -148,10 +148,7 @@ class _TextToTextState extends State<TextToText> {
               height: mq.height * 0.04,
             ),
 
-            // if (_c.resultC.text.isNotEmpty)
-            //   Obx(
-            //     () => _translateResult(),
-            //   ),
+         
 
             CustomButton(txt: "Translate", onTap: _c.googleTranslate)
           ],

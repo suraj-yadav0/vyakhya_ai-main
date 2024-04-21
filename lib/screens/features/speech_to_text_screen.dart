@@ -242,18 +242,6 @@ class _SpeecgToTextState extends State<SpeecgToText> {
               height: mq.height * 0.04,
             ),
 
-
-// I will work on you later
-            // SizedBox(
-            //   height: 100,
-            //   child: ListView(
-            //     scrollDirection: Axis.horizontal,
-            //     padding: const EdgeInsets.symmetric(horizontal: 25),
-            //     children: SpeechType.values
-            //         .map((e) => CustomCard(speechType: e))
-            //         .toList(),
-            //   ),
-            // ),
             SizedBox(
               height: mq.height * 0.04,
             ),
@@ -267,14 +255,14 @@ class _SpeecgToTextState extends State<SpeecgToText> {
 
   Widget _translateResult() => switch (_s.status.value) {
         Statu.none => const SizedBox(),
-        // Condition.none => const SizedBox(),
+        
         Statu.complete => Padding(
             padding: EdgeInsets.symmetric(
                 horizontal: mq.width * 0.04, vertical: mq.height * 0.035),
             child: TextFormField(
               controller: _s.resultC,
               style: const TextStyle(color: Colors.white),
-              // minLines: 5,
+              
               maxLines: null,
               textAlign: TextAlign.center,
               
