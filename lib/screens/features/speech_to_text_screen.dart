@@ -213,6 +213,7 @@ class _SpeecgToTextState extends State<SpeecgToText> {
               padding: EdgeInsets.symmetric(
                   horizontal: mq.width * 0.04, vertical: mq.height * 0.035),
               child: TextFormField(
+                
                 controller: _s.res,
                 minLines: 5,
                 maxLines: null,
@@ -241,10 +242,6 @@ class _SpeecgToTextState extends State<SpeecgToText> {
               height: mq.height * 0.04,
             ),
 
-            // if (_s.resultC.text.isNotEmpty)
-            //   Obx(
-            //     () => _translateResult(),
-            //   ),
 
 // I will work on you later
             // SizedBox(

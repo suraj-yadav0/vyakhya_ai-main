@@ -1,0 +1,1 @@
+Goodmorning Everyone, My name is Suraj Yadav and this is my teammate Sneha Satapathy. We are from 3rd year , Computer Science. Our project number is 76 and problem statement given to us is to Develope a transaltion app capable of translating of translating realtime spoken and written languages.Now let us understand the problem stateement:
