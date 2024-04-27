@@ -7,7 +7,7 @@ import 'package:vyakhya_ai/screens/drawer%20Screens/about_screen.dart';
 import 'package:vyakhya_ai/screens/drawer%20Screens/dashboard_screen.dart';
 import 'package:vyakhya_ai/screens/drawer%20Screens/feedback_screen.dart';
 import 'package:vyakhya_ai/screens/drawer%20Screens/help_screen.dart';
-import 'package:vyakhya_ai/screens/drawer%20Screens/logout_screen.dart';
+
 import 'package:vyakhya_ai/screens/drawer%20Screens/seettings_screen.dart';
 import 'package:vyakhya_ai/screens/welcome_screen.dart';
 
@@ -48,16 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
           centerTitle: true,
           backgroundColor: Colors.transparent,
-          // flexibleSpace: Container(
-          //   decoration: const BoxDecoration(
-          //     gradient: LinearGradient(
-          //       colors: [
-          //         Color.fromARGB(255, 35, 173, 118),
-          //         Color.fromARGB(255, 78, 127, 130)
-          //       ],
-          //     ),
-          //   ),
-          // ),
+         
         ),
         backgroundColor: Colors.transparent,
         body: Center(
