@@ -252,19 +252,7 @@ const Spacer(),
             ],
           )
 
-          // SizedBox(
-          //   height: 100,
-          //   child: ListView(
-          //     scrollDirection: Axis.horizontal,
-          //     // shrinkWrap: true,
-          //     padding: const EdgeInsets.symmetric(
-          //       horizontal: 25,
-          //     ),
-          //     children: SpeechType.values
-          //         .map((e) => CustomCard(speechType: e))
-          //         .toList(),
-          //   ),
-          // ),
+     
           ),
     );
   }
