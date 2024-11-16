@@ -12,7 +12,48 @@ void main() {
   // Start with Galaxy A50 as it's a common Android device
       defaultDevice: Devices.ios.iPhone13ProMax,
 
-      //show toolbar to let users test different devices
+      //show toolbar to let users test different devices,
+
+      isToolbarVisible: true,
+
+      //keep English Only to Avoid confusion
+
+      availableLocales: const [Locale('en')],
+
+      //Customise Preview controls,
+      
+      tools: const [
+        DeviceSection(
+          model: true,
+          orientation: false,
+          frameVisibility: false,
+          virtualKeyboard: false,
+        ),
+
+
+          // Theme switching section
+        // SystemSection(
+        //   locale: false, // Hide language options - we're keeping it English only
+        //   theme: false, // Show theme switcher if your app has dark/light modes
+        // ),
+
+        // Disable accessibility for demo simplicity
+        // AccessibilitySection(
+        //   boldText: false,
+        //   invertColors: false,
+        //   textScalingFactor: false,
+        //   accessibleNavigation: false,
+        // ),
+
+        // Hide extra settings to keep demo focused
+        // SettingsSection(
+        //   backgroundTheme: false,
+        //   toolsTheme: false,
+        // ),
+      ],
+
+
+      
 
 
 
