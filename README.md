@@ -12,6 +12,16 @@ I'm a Flutter Developer..and this My..
 Vyakhya AI stands as a cutting-edge solution, revolutionizing language translation with its robust architecture and user-friendly interface. As we anticipate Vyakhya AI 2.0 and beyond, the integration of quantum computing, expanded language pairs, and advancements in emotion recognition promises a future where linguistic barriers dissolve. Vyakhya AI's commitment to innovation, inclusivity, and security positions it as a pivotal force in global connectivity
 
 
+
+## Presentation
+
+To view the Presentation
+
+```bash
+  https://www.canva.com/design/DAGCsNwPvew/VzMQfVksraFVSCwFM5r2DQ/edit?utm_content=DAGCsNwPvew&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+```
+
+
 ## Download
 
 https://github.com/suraj-yadav0/vyakhya_ai-main/releases/download/v0.0.01/base.apk
