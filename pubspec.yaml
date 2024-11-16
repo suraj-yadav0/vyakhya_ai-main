@@ -46,6 +46,7 @@ dependencies:
   google_mlkit_text_recognition: ^0.11.0
   gallery_picker: ^0.5.1
   image_picker: ^1.1.0
+  device_preview: ^1.2.0
   # icons_launcher: ^2.1.7
  
 
