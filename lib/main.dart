@@ -53,7 +53,7 @@ void main() {
       ],
 
 
-      // Curated list of devices for comprehensive preview
+      //, Curated list of devices for comprehensive preview
       devices: [
         // ... Devices.all, // uncomment to see all devices
 
@@ -81,7 +81,7 @@ void main() {
     
 
 
-    builder: (context) => MyApp(),
+    builder: (context) => const MyApp(),
   ));
 }
 
@@ -93,6 +93,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
       theme: ThemeData(
         iconTheme: const IconThemeData(color: Colors.white),
       //  colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
