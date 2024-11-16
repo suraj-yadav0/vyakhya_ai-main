@@ -53,7 +53,28 @@ void main() {
       ],
 
 
-      
+      // Curated list of devices for comprehensive preview
+      devices: [
+        // ... Devices.all, // uncomment to see all devices
+
+        // Popular Android Devices
+        Devices.android.samsungGalaxyA50, // Mid-range
+        Devices.android.samsungGalaxyNote20, // Large screen
+        Devices.android.samsungGalaxyS20, // Flagship
+        Devices.android.samsungGalaxyNote20Ultra, // Premium
+        Devices.android.onePlus8Pro, // Different aspect ratio
+        Devices.android.sonyXperia1II, // Tall screen
+
+        // Popular iOS Devices
+        Devices.ios.iPhoneSE, // Small screen
+        Devices.ios.iPhone12, // Standard size
+        Devices.ios.iPhone12Mini, // Compact
+        Devices.ios.iPhone12ProMax, // Large
+        Devices.ios.iPhone13, // Latest standard
+        Devices.ios.iPhone13ProMax, // Latest large
+        Devices.ios.iPhone13Mini, // Latest compact
+        Devices.ios.iPhoneSE, // Budget option
+      ],
 
 
 
